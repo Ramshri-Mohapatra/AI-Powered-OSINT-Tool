@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[10]:
+# In[1]:
 
 
 #Required Libraries
@@ -13,7 +13,7 @@ import time
 import schedule
 
 
-# In[11]:
+# In[2]:
 
 
 # ==== MongoDB Setup ====
@@ -32,7 +32,7 @@ except Exception as e:
     print(f" Error connecting to MongoDB: {e}")
 
 
-# In[12]:
+# In[3]:
 
 
 keywords = [
@@ -51,7 +51,7 @@ keywords = [
 ]
 
 
-# In[13]:
+# In[4]:
 
 
 NEWSAPI_KEY = "a287317e0ca94d568dd9fb178361187d"
@@ -92,7 +92,7 @@ def fetch_and_store_news(keyword):
         logging.error(f" Error collecting data from NewsAPI for keyword '{keyword}': {e}")
 
 
-# In[14]:
+# In[5]:
 
 
 import praw
@@ -144,7 +144,7 @@ def collect_from_praw():
 #collect_from_praw()
 
 
-# In[15]:
+# In[6]:
 
 
 rss_urls = ["https://krebsonsecurity.com/feed/", "https://threatpost.com/feed/"]
@@ -154,89 +154,89 @@ def collect_from_rss():
         for url in rss_urls:
             feed = feedparser.parse(url)
             for entry in feed.entries:
-                doc = {
-                    "source": "rss",
-                    "timestamp": entry.published,
-                    "text": entry.title + ". " + entry.summary,
-                    "meta": {
-                        "author": entry.get("author", "N/A"),
-                        "url": entry.link
-                    },
-                    "fetched_at": datetime.utcnow().isoformat()
-                }
-                rss_collection.insert_one(doc)
-        
-        print(" RSS data collection successful")
+                # Check if the entry already exists based on the link
+                if rss_collection.count_documents({"meta.url": entry.link}) == 0:
+                    doc = {
+                        "source": "rss",
+                        "timestamp": entry.published,
+                        "text": entry.title + ". " + entry.summary,
+                        "meta": {
+                            "author": entry.get("author", "N/A"),
+                            "url": entry.link
+                        },
+                        "fetched_at": datetime.utcnow().isoformat()
+                    }
+                    rss_collection.insert_one(doc)
+                    logging.info(f" New RSS article inserted: {entry.title}")
+                else:
+                    logging.info(f" Skipped duplicate RSS article: {entry.title}")
+
+        print("RSS data collection complete.")
         
     except Exception as e:
-        print(f" Error collecting data from RSS feeds: {e}")
-
-#collect_from_rss()
+        logging.error(f" Error collecting data from RSS feeds: {e}")
 
 
-# In[16]:
+
+# In[7]:
 
 
-# ==== RapidAPI Request Function ====
+import logging
+from datetime import datetime, timedelta
+
 def collect_from_rapidapi(ioc_type, ioc_value):
     try:
-        # Determine the correct endpoint based on IOC type
-        url_map = {
-            "ip": f"https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/ip",
-            "domain": f"https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/domain",
-            "url": f"https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/url",
-            "hash": f"https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/hash"
-        }
-
-        url = url_map.get(ioc_type)
-        
-        if not url:
-            print(f" Invalid IOC type: {ioc_type}")
+        # Skip if the same IOC was collected in the last 24h
+        existing = rapidapi_collection.find_one({
+            "ioc_type": ioc_type,
+            "ioc_value": ioc_value,
+            "timestamp": {"$gte": (datetime.utcnow() - timedelta(hours=24)).isoformat()}
+        })
+        if existing:
+            logging.info(f" Skipping {ioc_type}:{ioc_value} (already collected within 24h)")
             return
-        
-        querystring = {"query": ioc_value}
+
+        url_map = {
+            "ip": "https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/ip",
+            "domain": "https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/domain",
+            "url": "https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/url",
+            "hash": "https://ioc-search.p.rapidapi.com/rapid/v1/ioc/search/hash"
+        }
+        url = url_map.get(ioc_type)
+        if not url:
+            logging.warning(f" Invalid IOC type: {ioc_type}")
+            return
 
         headers = {
             "x-rapidapi-key": "0ea5fe4d7fmsh0b2b8346715525cp1263f3jsn707750ed0fb2",
             "x-rapidapi-host": "ioc-search.p.rapidapi.com"
         }
 
-        response = requests.get(url, headers=headers, params=querystring)
-        response.raise_for_status()  # Ensure request was successful
-        
+        response = requests.get(url, headers=headers, params={"query": ioc_value})
+        response.raise_for_status()
         data = response.json()
-        
-        # Check if the API returned data successfully
-        if not data.get("data"):
-            print(f" No data returned for {ioc_type}: {ioc_value}")
-            return
-        
-        # Print the response to verify
-        print(f" Full Response for {ioc_type} '{ioc_value}': {data}")
 
-        # Prepare the document for MongoDB
+        if not data.get("data"):
+            logging.info(f" No new data for {ioc_type}: {ioc_value}")
+            return
+
         doc = {
             "source": "rapidapi",
             "ioc_type": ioc_type,
             "ioc_value": ioc_value,
             "timestamp": datetime.utcnow().isoformat(),
-            "data": data,  # Save the entire data object
+            "data": data,
             "fetched_at": datetime.utcnow().isoformat()
         }
-        
-        # Insert data into MongoDB
+
         rapidapi_collection.insert_one(doc)
-        
-        print(f" Data successfully saved for {ioc_type}: {ioc_value}")
-        
+        logging.info(f" Stored new data for {ioc_type}: {ioc_value}")
+
     except Exception as e:
-        print(f" Error collecting data from RapidAPI for {ioc_type} '{ioc_value}': {e}")
-
-# Test the function with an IP address
-#collect_from_rapidapi("ip", "117.131.215.118")
+        logging.error(f" Error collecting {ioc_type}:{ioc_value} → {e}")
 
 
-# In[ ]:
+# In[8]:
 
 
 import schedule
@@ -266,7 +266,7 @@ logging.basicConfig(
 
 def log_start(function_name):
     logging.info(f"Starting function: {function_name}")
-    print(f"🚀 Starting function: {function_name} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f" Starting function: {function_name} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 def log_end(function_name):
     logging.info(f"Finished function: {function_name}")
@@ -283,7 +283,7 @@ ioc_indicators = [
 def run_newsapi_fetch():
     try:
         log_start("NewsAPI Daily Fetch")
-        for keyword in news_keywords:
+        for keyword in keywords:
             fetch_and_store_news(keyword)
         log_end("NewsAPI Daily Fetch")
     except Exception as e:
@@ -292,7 +292,7 @@ def run_newsapi_fetch():
 # === IOC Collection - Hourly Job
 def run_others():
     try:
-        log_start("others Hourly Collection")
+        log_start("IOC Hourly Collection")
 
         log_start("collect_from_praw")
         collect_from_praw()
@@ -307,10 +307,15 @@ def run_others():
             collect_from_rapidapi(ioc_type, ioc_value)
             log_end(f"collect_from_rapidapi ({ioc_type}: {ioc_value})")
 
-        log_end("others Hourly Collection")
+        log_end("IOC Hourly Collection")
     except Exception as e:
-        logging.error(f" Error in other_collection: {e}")
+        logging.error(f" Error in run_ioc_collection: {e}")
 
+
+# === Run Immediately Once at Startup
+logging.info("Running startup fetch (NewsAPI + Others)...")
+run_newsapi_fetch()
+run_others()
 # === Scheduler Rules
 schedule.every().day.at("00:00").do(run_newsapi_fetch)  # Daily at midnight
 schedule.every().hour.do(run_others)             # ⏱Hourly

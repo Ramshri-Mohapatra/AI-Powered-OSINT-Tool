@@ -215,3 +215,246 @@
 2025-04-09 13:44:17,618 - INFO - Starting NewsAPI collection for keyword: APT
 2025-04-09 13:44:21,281 - INFO -  Successfully collected 0 new articles for keyword: APT
 2025-04-09 13:44:21,286 - INFO - Starting NewsAPI collection for keyword: penetration testing
+2025-04-09 22:03:36,229 - INFO - Starting function: NewsAPI Daily Fetch
+2025-04-09 22:03:36,232 - ERROR -  Error in run_newsapi_fetch: name 'news_keywords' is not defined
+2025-04-09 22:03:36,235 - INFO - Starting function: IOC Hourly Collection
+2025-04-09 22:03:36,237 - INFO - Starting function: collect_from_praw
+2025-04-09 22:03:52,551 - INFO - Finished function: collect_from_praw
+2025-04-09 22:03:52,553 - INFO - Starting function: collect_from_rss
+2025-04-09 22:03:54,015 - INFO - Finished function: collect_from_rss
+2025-04-09 22:03:54,018 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:03:54,038 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:03:54,043 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:03:54,063 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:03:54,068 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:03:54,087 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:03:54,107 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:03:54,129 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:03:54,137 - INFO - Finished function: IOC Hourly Collection
+2025-04-09 22:06:31,586 - INFO - Starting function: NewsAPI Daily Fetch
+2025-04-09 22:06:31,595 - ERROR -  Error in run_newsapi_fetch: name 'news_keywords' is not defined
+2025-04-09 22:06:31,602 - INFO - Starting function: IOC Hourly Collection
+2025-04-09 22:06:31,608 - INFO - Starting function: collect_from_praw
+2025-04-09 22:06:31,614 - ERROR -  Error in run_ioc_collection: name 'collect_from_praw' is not defined
+2025-04-09 22:13:02,277 - INFO - Running startup fetch (NewsAPI + Others)...
+2025-04-09 22:13:02,287 - INFO - Starting function: NewsAPI Daily Fetch
+2025-04-09 22:13:02,295 - ERROR -  Error in run_newsapi_fetch: name 'news_keywords' is not defined
+2025-04-09 22:13:02,300 - INFO - Starting function: IOC Hourly Collection
+2025-04-09 22:13:02,308 - INFO - Starting function: collect_from_praw
+2025-04-09 22:13:18,501 - INFO - Finished function: collect_from_praw
+2025-04-09 22:13:18,504 - INFO - Starting function: collect_from_rss
+2025-04-09 22:13:19,898 - INFO - Finished function: collect_from_rss
+2025-04-09 22:13:19,900 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:13:19,914 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:13:19,917 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:13:19,926 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:13:19,928 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:13:19,932 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:13:19,935 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:13:19,947 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:13:19,950 - INFO - Finished function: IOC Hourly Collection
+2025-04-09 22:24:15,025 - INFO - Running startup fetch (NewsAPI + Others)...
+2025-04-09 22:24:15,029 - INFO - Starting function: NewsAPI Daily Fetch
+2025-04-09 22:24:15,031 - ERROR -  Error in run_newsapi_fetch: name 'news_keywords' is not defined
+2025-04-09 22:24:15,038 - INFO - Starting function: IOC Hourly Collection
+2025-04-09 22:24:15,040 - INFO - Starting function: collect_from_praw
+2025-04-09 22:24:31,110 - INFO - Finished function: collect_from_praw
+2025-04-09 22:24:31,117 - INFO - Starting function: collect_from_rss
+2025-04-09 22:24:32,838 - INFO - Finished function: collect_from_rss
+2025-04-09 22:24:32,845 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:24:32,869 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:24:32,873 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:24:32,901 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:24:32,916 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:24:32,975 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:24:32,978 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:24:33,039 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:24:33,048 - INFO - Finished function: IOC Hourly Collection
+2025-04-09 22:28:02,901 - INFO - Running startup fetch (NewsAPI + Others)...
+2025-04-09 22:28:02,906 - INFO - Starting function: NewsAPI Daily Fetch
+2025-04-09 22:28:02,910 - ERROR -  Error in run_newsapi_fetch: name 'news_keywords' is not defined
+2025-04-09 22:28:02,913 - INFO - Starting function: IOC Hourly Collection
+2025-04-09 22:28:02,917 - INFO - Starting function: collect_from_praw
+2025-04-09 22:28:19,845 - INFO - Finished function: collect_from_praw
+2025-04-09 22:28:19,849 - INFO - Starting function: collect_from_rss
+2025-04-09 22:28:21,571 - INFO - Finished function: collect_from_rss
+2025-04-09 22:28:21,574 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:28:21,659 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:28:21,662 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:28:21,789 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:28:21,791 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:28:21,848 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:28:21,854 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:28:22,054 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:28:22,058 - INFO - Finished function: IOC Hourly Collection
+2025-04-09 22:55:26,445 - INFO - Running startup fetch (NewsAPI + Others)...
+2025-04-09 22:55:26,449 - INFO - Starting function: NewsAPI Daily Fetch
+2025-04-09 22:55:26,454 - INFO - Starting NewsAPI collection for keyword: cybersecurity
+2025-04-09 22:55:29,762 - INFO -  Successfully collected 0 new articles for keyword: cybersecurity
+2025-04-09 22:55:29,768 - INFO - Starting NewsAPI collection for keyword: infosec
+2025-04-09 22:55:32,796 - INFO -  Successfully collected 2 new articles for keyword: infosec
+2025-04-09 22:55:32,803 - INFO - Starting NewsAPI collection for keyword: threat intelligence
+2025-04-09 22:55:35,903 - INFO -  Successfully collected 3 new articles for keyword: threat intelligence
+2025-04-09 22:55:35,910 - INFO - Starting NewsAPI collection for keyword: vulnerability
+2025-04-09 22:55:38,436 - INFO -  Successfully collected 2 new articles for keyword: vulnerability
+2025-04-09 22:55:38,441 - INFO - Starting NewsAPI collection for keyword: exploit
+2025-04-09 22:55:41,492 - INFO -  Successfully collected 3 new articles for keyword: exploit
+2025-04-09 22:55:41,498 - INFO - Starting NewsAPI collection for keyword: zero-day
+2025-04-09 22:55:44,490 - INFO -  Successfully collected 6 new articles for keyword: zero-day
+2025-04-09 22:55:44,495 - INFO - Starting NewsAPI collection for keyword: APT
+2025-04-09 22:55:47,220 - INFO -  Successfully collected 2 new articles for keyword: APT
+2025-04-09 22:55:47,224 - INFO - Starting NewsAPI collection for keyword: penetration testing
+2025-04-09 22:55:50,633 - INFO -  Successfully collected 0 new articles for keyword: penetration testing
+2025-04-09 22:55:50,640 - INFO - Starting NewsAPI collection for keyword: network security
+2025-04-09 22:55:53,674 - INFO -  Successfully collected 0 new articles for keyword: network security
+2025-04-09 22:55:53,679 - INFO - Starting NewsAPI collection for keyword: firewall breach
+2025-04-09 22:55:57,449 - INFO -  Successfully collected 2 new articles for keyword: firewall breach
+2025-04-09 22:55:57,452 - INFO - Starting NewsAPI collection for keyword: incident response
+2025-04-09 22:56:00,412 - INFO -  Successfully collected 2 new articles for keyword: incident response
+2025-04-09 22:56:00,415 - INFO - Starting NewsAPI collection for keyword: ransomware
+2025-04-09 22:56:02,966 - INFO -  Successfully collected 2 new articles for keyword: ransomware
+2025-04-09 22:56:02,970 - INFO - Starting NewsAPI collection for keyword: phishing
+2025-04-09 22:56:05,399 - INFO -  Successfully collected 1 new articles for keyword: phishing
+2025-04-09 22:56:05,405 - INFO - Starting NewsAPI collection for keyword: DDoS
+2025-04-09 22:56:08,460 - INFO -  Successfully collected 0 new articles for keyword: DDoS
+2025-04-09 22:56:08,464 - INFO - Starting NewsAPI collection for keyword: SQL injection
+2025-04-09 22:56:11,641 - INFO -  Successfully collected 2 new articles for keyword: SQL injection
+2025-04-09 22:56:11,644 - INFO - Starting NewsAPI collection for keyword: man-in-the-middle attack
+2025-04-09 22:56:14,302 - INFO -  Successfully collected 4 new articles for keyword: man-in-the-middle attack
+2025-04-09 22:56:14,306 - INFO - Starting NewsAPI collection for keyword: social engineering
+2025-04-09 22:56:16,885 - INFO -  Successfully collected 2 new articles for keyword: social engineering
+2025-04-09 22:56:16,889 - INFO - Starting NewsAPI collection for keyword: supply chain attack
+2025-04-09 22:56:19,315 - INFO -  Successfully collected 0 new articles for keyword: supply chain attack
+2025-04-09 22:56:19,319 - INFO - Starting NewsAPI collection for keyword: malvertising
+2025-04-09 22:56:22,681 - INFO -  Successfully collected 0 new articles for keyword: malvertising
+2025-04-09 22:56:22,686 - INFO - Starting NewsAPI collection for keyword: brute force attack
+2025-04-09 22:56:25,605 - INFO -  Successfully collected 1 new articles for keyword: brute force attack
+2025-04-09 22:56:25,608 - INFO - Starting NewsAPI collection for keyword: credential stuffing
+2025-04-09 22:56:29,159 - INFO -  Successfully collected 0 new articles for keyword: credential stuffing
+2025-04-09 22:56:29,164 - INFO - Starting NewsAPI collection for keyword: malware
+2025-04-09 22:56:32,113 - INFO -  Successfully collected 0 new articles for keyword: malware
+2025-04-09 22:56:32,117 - INFO - Starting NewsAPI collection for keyword: spyware
+2025-04-09 22:56:34,506 - INFO -  Successfully collected 2 new articles for keyword: spyware
+2025-04-09 22:56:34,511 - INFO - Starting NewsAPI collection for keyword: adware
+2025-04-09 22:56:36,547 - INFO -  Successfully collected 1 new articles for keyword: adware
+2025-04-09 22:56:36,552 - INFO - Starting NewsAPI collection for keyword: trojan
+2025-04-09 22:56:38,917 - INFO -  Successfully collected 1 new articles for keyword: trojan
+2025-04-09 22:56:38,920 - INFO - Starting NewsAPI collection for keyword: worm
+2025-04-09 22:56:41,492 - INFO -  Successfully collected 1 new articles for keyword: worm
+2025-04-09 22:56:41,499 - INFO - Starting NewsAPI collection for keyword: rootkit
+2025-04-09 22:56:44,720 - INFO -  Successfully collected 0 new articles for keyword: rootkit
+2025-04-09 22:56:44,723 - INFO - Starting NewsAPI collection for keyword: keylogger
+2025-04-09 22:56:45,179 - ERROR -  Error collecting data from NewsAPI for keyword 'keylogger': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=keylogger&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:45,183 - INFO - Starting NewsAPI collection for keyword: RAT
+2025-04-09 22:56:45,349 - ERROR -  Error collecting data from NewsAPI for keyword 'RAT': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=RAT&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:45,353 - INFO - Starting NewsAPI collection for keyword: ICS malware
+2025-04-09 22:56:45,527 - ERROR -  Error collecting data from NewsAPI for keyword 'ICS malware': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=ICS%20malware&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:45,532 - INFO - Starting NewsAPI collection for keyword: botnet
+2025-04-09 22:56:45,976 - ERROR -  Error collecting data from NewsAPI for keyword 'botnet': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=botnet&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:45,982 - INFO - Starting NewsAPI collection for keyword: backdoor
+2025-04-09 22:56:46,156 - ERROR -  Error collecting data from NewsAPI for keyword 'backdoor': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=backdoor&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:46,161 - INFO - Starting NewsAPI collection for keyword: CVE
+2025-04-09 22:56:46,338 - ERROR -  Error collecting data from NewsAPI for keyword 'CVE': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=CVE&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:46,342 - INFO - Starting NewsAPI collection for keyword: Indicators of Compromise
+2025-04-09 22:56:46,790 - ERROR -  Error collecting data from NewsAPI for keyword 'Indicators of Compromise': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=Indicators%20of%20Compromise&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:46,798 - INFO - Starting NewsAPI collection for keyword: IOC
+2025-04-09 22:56:46,981 - ERROR -  Error collecting data from NewsAPI for keyword 'IOC': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=IOC&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:46,985 - INFO - Starting NewsAPI collection for keyword: MD5 hash
+2025-04-09 22:56:47,177 - ERROR -  Error collecting data from NewsAPI for keyword 'MD5 hash': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=MD5%20hash&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:47,183 - INFO - Starting NewsAPI collection for keyword: SHA256 hash
+2025-04-09 22:56:47,355 - ERROR -  Error collecting data from NewsAPI for keyword 'SHA256 hash': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=SHA256%20hash&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:47,358 - INFO - Starting NewsAPI collection for keyword: IP address blacklist
+2025-04-09 22:56:47,513 - ERROR -  Error collecting data from NewsAPI for keyword 'IP address blacklist': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=IP%20address%20blacklist&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:47,516 - INFO - Starting NewsAPI collection for keyword: malicious domains
+2025-04-09 22:56:47,673 - ERROR -  Error collecting data from NewsAPI for keyword 'malicious domains': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=malicious%20domains&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:47,677 - INFO - Starting NewsAPI collection for keyword: malicious URLs
+2025-04-09 22:56:47,837 - ERROR -  Error collecting data from NewsAPI for keyword 'malicious URLs': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=malicious%20URLs&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:47,841 - INFO - Starting NewsAPI collection for keyword: threat actor
+2025-04-09 22:56:48,006 - ERROR -  Error collecting data from NewsAPI for keyword 'threat actor': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=threat%20actor&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:48,009 - INFO - Starting NewsAPI collection for keyword: hacker group
+2025-04-09 22:56:48,164 - ERROR -  Error collecting data from NewsAPI for keyword 'hacker group': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=hacker%20group&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:48,168 - INFO - Starting NewsAPI collection for keyword: APT group
+2025-04-09 22:56:48,328 - ERROR -  Error collecting data from NewsAPI for keyword 'APT group': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=APT%20group&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:48,332 - INFO - Starting NewsAPI collection for keyword: state-sponsored attack
+2025-04-09 22:56:48,496 - ERROR -  Error collecting data from NewsAPI for keyword 'state-sponsored attack': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=state-sponsored%20attack&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:48,500 - INFO - Starting NewsAPI collection for keyword: hacktivist
+2025-04-09 22:56:48,660 - ERROR -  Error collecting data from NewsAPI for keyword 'hacktivist': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=hacktivist&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:48,666 - INFO - Starting NewsAPI collection for keyword: cyber espionage
+2025-04-09 22:56:48,858 - ERROR -  Error collecting data from NewsAPI for keyword 'cyber espionage': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=cyber%20espionage&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:48,863 - INFO - Starting NewsAPI collection for keyword: black hat
+2025-04-09 22:56:49,045 - ERROR -  Error collecting data from NewsAPI for keyword 'black hat': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=black%20hat&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:49,051 - INFO - Starting NewsAPI collection for keyword: white hat
+2025-04-09 22:56:49,247 - ERROR -  Error collecting data from NewsAPI for keyword 'white hat': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=white%20hat&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:49,254 - INFO - Starting NewsAPI collection for keyword: grey hat
+2025-04-09 22:56:49,474 - ERROR -  Error collecting data from NewsAPI for keyword 'grey hat': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=grey%20hat&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:49,480 - INFO - Starting NewsAPI collection for keyword: deepfake
+2025-04-09 22:56:49,648 - ERROR -  Error collecting data from NewsAPI for keyword 'deepfake': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=deepfake&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:49,652 - INFO - Starting NewsAPI collection for keyword: AI-generated malware
+2025-04-09 22:56:49,829 - ERROR -  Error collecting data from NewsAPI for keyword 'AI-generated malware': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=AI-generated%20malware&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:49,832 - INFO - Starting NewsAPI collection for keyword: zero-trust architecture
+2025-04-09 22:56:49,994 - ERROR -  Error collecting data from NewsAPI for keyword 'zero-trust architecture': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=zero-trust%20architecture&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:49,999 - INFO - Starting NewsAPI collection for keyword: cloud security breach
+2025-04-09 22:56:50,167 - ERROR -  Error collecting data from NewsAPI for keyword 'cloud security breach': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=cloud%20security%20breach&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:50,172 - INFO - Starting NewsAPI collection for keyword: IoT security
+2025-04-09 22:56:50,343 - ERROR -  Error collecting data from NewsAPI for keyword 'IoT security': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=IoT%20security&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:50,347 - INFO - Starting NewsAPI collection for keyword: blockchain security
+2025-04-09 22:56:50,510 - ERROR -  Error collecting data from NewsAPI for keyword 'blockchain security': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=blockchain%20security&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:50,514 - INFO - Starting NewsAPI collection for keyword: quantum computing threat
+2025-04-09 22:56:50,776 - ERROR -  Error collecting data from NewsAPI for keyword 'quantum computing threat': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=quantum%20computing%20threat&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:50,785 - INFO - Starting NewsAPI collection for keyword: Metasploit
+2025-04-09 22:56:50,952 - ERROR -  Error collecting data from NewsAPI for keyword 'Metasploit': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=Metasploit&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:50,957 - INFO - Starting NewsAPI collection for keyword: Burp Suite
+2025-04-09 22:56:51,136 - ERROR -  Error collecting data from NewsAPI for keyword 'Burp Suite': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=Burp%20Suite&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:51,140 - INFO - Starting NewsAPI collection for keyword: Nmap
+2025-04-09 22:56:51,308 - ERROR -  Error collecting data from NewsAPI for keyword 'Nmap': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=Nmap&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:51,310 - INFO - Starting NewsAPI collection for keyword: Wireshark
+2025-04-09 22:56:51,477 - ERROR -  Error collecting data from NewsAPI for keyword 'Wireshark': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=Wireshark&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:51,480 - INFO - Starting NewsAPI collection for keyword: Cobalt Strike
+2025-04-09 22:56:51,638 - ERROR -  Error collecting data from NewsAPI for keyword 'Cobalt Strike': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=Cobalt%20Strike&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:51,641 - INFO - Starting NewsAPI collection for keyword: Shodan
+2025-04-09 22:56:51,795 - ERROR -  Error collecting data from NewsAPI for keyword 'Shodan': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=Shodan&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:51,796 - INFO - Starting NewsAPI collection for keyword: VirusTotal
+2025-04-09 22:56:51,955 - ERROR -  Error collecting data from NewsAPI for keyword 'VirusTotal': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=VirusTotal&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:51,959 - INFO - Starting NewsAPI collection for keyword: AbuseIPDB
+2025-04-09 22:56:52,120 - ERROR -  Error collecting data from NewsAPI for keyword 'AbuseIPDB': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=AbuseIPDB&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:52,124 - INFO - Starting NewsAPI collection for keyword: ThreatCrowd
+2025-04-09 22:56:52,313 - ERROR -  Error collecting data from NewsAPI for keyword 'ThreatCrowd': 429 Client Error:  for url: https://newsapi.org/v2/everything?q=ThreatCrowd&apiKey=a287317e0ca94d568dd9fb178361187d&pageSize=100
+2025-04-09 22:56:52,317 - INFO - Finished function: NewsAPI Daily Fetch
+2025-04-09 22:56:52,322 - INFO - Starting function: IOC Hourly Collection
+2025-04-09 22:56:52,327 - INFO - Starting function: collect_from_praw
+2025-04-09 22:57:06,728 - INFO - Finished function: collect_from_praw
+2025-04-09 22:57:06,732 - INFO - Starting function: collect_from_rss
+2025-04-09 22:57:07,414 - INFO -  Skipped duplicate RSS article: Patch Tuesday, April 2025 Edition
+2025-04-09 22:57:07,437 - INFO -  Skipped duplicate RSS article: Cyber Forensic Expert in 2,000+ Cases Faces FBI Probe
+2025-04-09 22:57:07,464 - INFO -  Skipped duplicate RSS article: How Each Pillar of the 1st Amendment is Under Attack
+2025-04-09 22:57:07,489 - INFO -  Skipped duplicate RSS article: When Getting Phished Puts You in Mortal Danger
+2025-04-09 22:57:07,515 - INFO -  Skipped duplicate RSS article: Arrests in Tap-to-Pay Scheme Powered by Phishing
+2025-04-09 22:57:07,541 - INFO -  Skipped duplicate RSS article: DOGE to Fired CISA Staff: Email Us Your Personal Data
+2025-04-09 22:57:07,568 - INFO -  Skipped duplicate RSS article: ClickFix: How to Infect Your PC in Three Easy Steps
+2025-04-09 22:57:07,607 - INFO -  Skipped duplicate RSS article: Microsoft: 6 Zero-Days in March 2025 Patch Tuesday
+2025-04-09 22:57:07,638 - INFO -  Skipped duplicate RSS article: Alleged Co-Founder of Garantex Arrested in India
+2025-04-09 22:57:07,668 - INFO -  Skipped duplicate RSS article: Feds Link $150M Cyberheist to 2022 LastPass Hacks
+2025-04-09 22:57:08,224 - INFO -  Skipped duplicate RSS article: Student Loan Breach Exposes 2.5M Records
+2025-04-09 22:57:08,243 - INFO -  Skipped duplicate RSS article: Watering Hole Attacks Push ScanBox Keylogger
+2025-04-09 22:57:08,264 - INFO -  Skipped duplicate RSS article: Tentacles of ‘0ktapus’ Threat Group Victimize 130 Firms
+2025-04-09 22:57:08,286 - INFO -  Skipped duplicate RSS article: Ransomware Attacks are on the Rise
+2025-04-09 22:57:08,306 - INFO -  Skipped duplicate RSS article: Cybercriminals Are Selling Access to Chinese Surveillance Cameras
+2025-04-09 22:57:08,329 - INFO -  Skipped duplicate RSS article: Twitter Whistleblower Complaint: The TL;DR Version
+2025-04-09 22:57:08,350 - INFO -  Skipped duplicate RSS article: Firewall Bug Under Active Attack Triggers CISA Warning
+2025-04-09 22:57:08,371 - INFO -  Skipped duplicate RSS article: Fake Reservation Links Prey on Weary Travelers
+2025-04-09 22:57:08,393 - INFO -  Skipped duplicate RSS article: iPhone Users Urged to Update to Patch 2 Zero-Days
+2025-04-09 22:57:08,418 - INFO -  Skipped duplicate RSS article: Google Patches Chrome’s Fifth Zero-Day of the Year
+2025-04-09 22:57:08,422 - INFO - Finished function: collect_from_rss
+2025-04-09 22:57:08,426 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:57:08,528 - INFO -  Skipping ip:117.131.215.118 (already collected within 24h)
+2025-04-09 22:57:08,531 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 22:57:08,533 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:57:08,671 - INFO -  Skipping domain:example.com (already collected within 24h)
+2025-04-09 22:57:08,674 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-09 22:57:08,676 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:57:08,714 - INFO -  Skipping url:https://malicious-site.com (already collected within 24h)
+2025-04-09 22:57:08,719 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 22:57:08,724 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:57:08,911 - INFO -  Skipping hash:44d88612fea8a8f36de82e1278abb02f (already collected within 24h)
+2025-04-09 22:57:08,917 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 22:57:08,923 - INFO - Finished function: IOC Hourly Collection
