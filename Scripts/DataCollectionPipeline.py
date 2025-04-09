@@ -292,9 +292,6 @@ def run_newsapi_fetch():
 # === IOC Collection - Hourly Job
 def run_others():
     try:
-        logging.info(f"[SCHEDULED] run_others() triggered at {datetime.utcnow().isoformat()}")
-        print(f"run_others() triggered at {datetime.utcnow().isoformat()}")
-
         log_start("others Hourly Collection")
 
         log_start("collect_from_praw")
@@ -312,11 +309,11 @@ def run_others():
 
         log_end("others Hourly Collection")
     except Exception as e:
-        logging.error(f" Error in others_collection: {e}")
+        logging.error(f" Error in other_collection: {e}")
 
 # === Scheduler Rules
 schedule.every().day.at("00:00").do(run_newsapi_fetch)  # Daily at midnight
-schedule.every(1).minutes.do(run_others)             # ⏱Hourly
+schedule.every().hour.do(run_others)             # ⏱Hourly
 
 # === Start Loop
 while True:
