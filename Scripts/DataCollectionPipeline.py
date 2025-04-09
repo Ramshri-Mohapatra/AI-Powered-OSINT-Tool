@@ -292,7 +292,10 @@ def run_newsapi_fetch():
 # === IOC Collection - Hourly Job
 def run_others():
     try:
-        log_start("IOC Hourly Collection")
+        logging.info(f"[SCHEDULED] run_others() triggered at {datetime.utcnow().isoformat()}")
+        print(f"run_others() triggered at {datetime.utcnow().isoformat()}")
+
+        log_start("others Hourly Collection")
 
         log_start("collect_from_praw")
         collect_from_praw()
@@ -307,13 +310,13 @@ def run_others():
             collect_from_rapidapi(ioc_type, ioc_value)
             log_end(f"collect_from_rapidapi ({ioc_type}: {ioc_value})")
 
-        log_end("IOC Hourly Collection")
+        log_end("others Hourly Collection")
     except Exception as e:
-        logging.error(f" Error in run_ioc_collection: {e}")
+        logging.error(f" Error in others_collection: {e}")
 
 # === Scheduler Rules
 schedule.every().day.at("00:00").do(run_newsapi_fetch)  # Daily at midnight
-schedule.every().hour.do(run_others)             # ⏱Hourly
+schedule.every(1).minutes.do(run_others)             # ⏱Hourly
 
 # === Start Loop
 while True:
