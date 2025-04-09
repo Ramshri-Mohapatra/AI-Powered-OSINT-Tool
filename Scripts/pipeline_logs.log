@@ -1,0 +1,217 @@
+2025-04-07 18:52:02,589 - INFO - Starting function: run_collection
+2025-04-07 18:52:02,595 - INFO - Starting function: collect_from_praw
+2025-04-07 18:52:02,599 - INFO - Finished function: collect_from_praw
+2025-04-07 18:52:02,605 - INFO - Starting function: collect_from_rss
+2025-04-07 18:52:02,608 - INFO - Finished function: collect_from_rss
+2025-04-07 18:52:02,614 - INFO - Starting function: collect_from_rapidapi
+2025-04-07 18:52:02,618 - INFO - Finished function: collect_from_rapidapi
+2025-04-07 18:52:02,622 - INFO - Starting function: fetch_and_store_news
+2025-04-07 18:52:02,628 - INFO - Finished function: fetch_and_store_news
+2025-04-07 18:52:02,632 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-07 18:52:02,645 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-07 18:52:02,650 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-07 18:52:02,652 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-07 18:52:02,659 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-07 18:52:02,663 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-07 18:52:02,667 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-07 18:52:02,674 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-07 18:52:02,678 - INFO - Finished function: run_collection
+2025-04-07 18:52:42,688 - INFO - Starting function: run_collection
+2025-04-07 18:52:42,690 - INFO - Starting function: collect_from_praw
+2025-04-07 18:52:42,695 - INFO - Finished function: collect_from_praw
+2025-04-07 18:52:42,697 - INFO - Starting function: collect_from_rss
+2025-04-07 18:52:42,701 - INFO - Finished function: collect_from_rss
+2025-04-07 18:52:42,703 - INFO - Starting function: collect_from_rapidapi
+2025-04-07 18:52:42,706 - INFO - Finished function: collect_from_rapidapi
+2025-04-07 18:52:42,712 - INFO - Starting function: fetch_and_store_news
+2025-04-07 18:52:42,719 - INFO - Finished function: fetch_and_store_news
+2025-04-07 18:52:42,723 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-07 18:52:42,727 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-07 18:52:42,738 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-07 18:52:42,747 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-07 18:52:42,756 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-07 18:52:42,763 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-07 18:52:42,769 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-07 18:52:42,777 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-07 18:52:42,784 - INFO - Finished function: run_collection
+2025-04-07 18:53:02,795 - INFO - Starting function: run_collection
+2025-04-07 18:53:02,797 - INFO - Starting function: collect_from_praw
+2025-04-07 18:53:02,798 - INFO - Finished function: collect_from_praw
+2025-04-07 18:53:02,800 - INFO - Starting function: collect_from_rss
+2025-04-07 18:53:02,801 - INFO - Finished function: collect_from_rss
+2025-04-07 18:53:02,804 - INFO - Starting function: collect_from_rapidapi
+2025-04-07 18:53:02,805 - INFO - Finished function: collect_from_rapidapi
+2025-04-07 18:53:02,807 - INFO - Starting function: fetch_and_store_news
+2025-04-07 18:53:02,809 - INFO - Finished function: fetch_and_store_news
+2025-04-07 18:53:02,810 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-07 18:53:02,812 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-07 18:53:02,813 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-07 18:53:02,816 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-07 18:53:02,819 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-07 18:53:02,820 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-07 18:53:02,825 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-07 18:53:02,828 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-07 18:53:02,830 - INFO - Finished function: run_collection
+2025-04-09 13:28:40,664 - INFO - Starting function: run_collection
+2025-04-09 13:28:40,666 - INFO - Starting function: collect_from_praw
+2025-04-09 13:29:04,228 - INFO - Finished function: collect_from_praw
+2025-04-09 13:29:04,231 - INFO - Starting function: collect_from_rss
+2025-04-09 13:29:06,131 - INFO - Finished function: collect_from_rss
+2025-04-09 13:29:06,135 - INFO - Starting function: collect_from_rapidapi
+2025-04-09 13:29:06,136 - INFO - Finished function: collect_from_rapidapi
+2025-04-09 13:29:06,140 - INFO - Starting function: fetch_and_store_news
+2025-04-09 13:29:06,140 - INFO - Starting NewsAPI collection for keyword: cybersecurity
+2025-04-09 13:29:09,139 - INFO - Starting NewsAPI collection for keyword: infosec
+2025-04-09 13:29:12,378 - INFO - Starting NewsAPI collection for keyword: threat intelligence
+2025-04-09 13:29:15,756 - INFO - Starting NewsAPI collection for keyword: vulnerability
+2025-04-09 13:29:18,966 - INFO - Starting NewsAPI collection for keyword: exploit
+2025-04-09 13:29:22,122 - INFO - Starting NewsAPI collection for keyword: zero-day
+2025-04-09 13:29:25,598 - INFO - Starting NewsAPI collection for keyword: APT
+2025-04-09 13:29:28,508 - INFO - Starting NewsAPI collection for keyword: penetration testing
+2025-04-09 13:29:31,628 - INFO - Starting NewsAPI collection for keyword: network security
+2025-04-09 13:29:34,123 - INFO - Starting NewsAPI collection for keyword: firewall breach
+2025-04-09 13:29:38,496 - INFO - Starting NewsAPI collection for keyword: incident response
+2025-04-09 13:29:41,834 - INFO - Starting NewsAPI collection for keyword: ransomware
+2025-04-09 13:29:45,032 - INFO - Starting NewsAPI collection for keyword: phishing
+2025-04-09 13:29:48,352 - INFO - Starting NewsAPI collection for keyword: DDoS
+2025-04-09 13:29:51,328 - INFO - Starting NewsAPI collection for keyword: SQL injection
+2025-04-09 13:29:55,431 - INFO - Starting NewsAPI collection for keyword: man-in-the-middle attack
+2025-04-09 13:29:58,540 - INFO - Starting NewsAPI collection for keyword: social engineering
+2025-04-09 13:30:01,828 - INFO - Starting NewsAPI collection for keyword: supply chain attack
+2025-04-09 13:30:05,673 - INFO - Starting NewsAPI collection for keyword: malvertising
+2025-04-09 13:30:10,608 - INFO - Starting NewsAPI collection for keyword: brute force attack
+2025-04-09 13:30:13,768 - INFO - Starting NewsAPI collection for keyword: credential stuffing
+2025-04-09 13:30:17,000 - INFO - Starting NewsAPI collection for keyword: malware
+2025-04-09 13:30:20,157 - INFO - Starting NewsAPI collection for keyword: spyware
+2025-04-09 13:30:23,888 - INFO - Starting NewsAPI collection for keyword: adware
+2025-04-09 13:30:26,383 - INFO - Starting NewsAPI collection for keyword: trojan
+2025-04-09 13:30:30,287 - INFO - Starting NewsAPI collection for keyword: worm
+2025-04-09 13:30:33,475 - INFO - Starting NewsAPI collection for keyword: rootkit
+2025-04-09 13:30:37,930 - INFO - Starting NewsAPI collection for keyword: keylogger
+2025-04-09 13:30:39,018 - INFO - Starting NewsAPI collection for keyword: RAT
+2025-04-09 13:30:42,428 - INFO - Starting NewsAPI collection for keyword: ICS malware
+2025-04-09 13:30:46,628 - INFO - Starting NewsAPI collection for keyword: botnet
+2025-04-09 13:30:50,528 - INFO - Starting NewsAPI collection for keyword: backdoor
+2025-04-09 13:30:54,120 - INFO - Starting NewsAPI collection for keyword: CVE
+2025-04-09 13:30:57,203 - INFO - Starting NewsAPI collection for keyword: Indicators of Compromise
+2025-04-09 13:31:00,691 - INFO - Starting NewsAPI collection for keyword: IOC
+2025-04-09 13:31:03,000 - INFO - Starting NewsAPI collection for keyword: MD5 hash
+2025-04-09 13:31:07,638 - INFO - Starting NewsAPI collection for keyword: SHA256 hash
+2025-04-09 13:31:10,748 - INFO - Starting NewsAPI collection for keyword: IP address blacklist
+2025-04-09 13:31:14,661 - INFO - Starting NewsAPI collection for keyword: malicious domains
+2025-04-09 13:31:19,587 - INFO - Starting NewsAPI collection for keyword: malicious URLs
+2025-04-09 13:31:23,007 - INFO - Starting NewsAPI collection for keyword: threat actor
+2025-04-09 13:31:26,212 - INFO - Starting NewsAPI collection for keyword: hacker group
+2025-04-09 13:31:29,682 - INFO - Starting NewsAPI collection for keyword: APT group
+2025-04-09 13:31:32,932 - INFO - Starting NewsAPI collection for keyword: state-sponsored attack
+2025-04-09 13:31:36,330 - INFO - Starting NewsAPI collection for keyword: hacktivist
+2025-04-09 13:31:39,756 - INFO - Starting NewsAPI collection for keyword: cyber espionage
+2025-04-09 13:31:43,348 - INFO - Starting NewsAPI collection for keyword: black hat
+2025-04-09 13:31:46,702 - INFO - Starting NewsAPI collection for keyword: white hat
+2025-04-09 13:31:49,824 - INFO - Starting NewsAPI collection for keyword: grey hat
+2025-04-09 13:31:52,810 - INFO - Starting NewsAPI collection for keyword: deepfake
+2025-04-09 13:31:56,082 - INFO - Starting NewsAPI collection for keyword: AI-generated malware
+2025-04-09 13:31:59,701 - INFO - Starting NewsAPI collection for keyword: zero-trust architecture
+2025-04-09 13:32:04,757 - INFO - Starting NewsAPI collection for keyword: cloud security breach
+2025-04-09 13:32:08,586 - INFO - Starting NewsAPI collection for keyword: IoT security
+2025-04-09 13:32:13,264 - INFO - Starting NewsAPI collection for keyword: blockchain security
+2025-04-09 13:32:17,796 - INFO - Starting NewsAPI collection for keyword: quantum computing threat
+2025-04-09 13:32:23,724 - INFO - Starting NewsAPI collection for keyword: Metasploit
+2025-04-09 13:32:27,889 - INFO - Starting NewsAPI collection for keyword: Burp Suite
+2025-04-09 13:32:29,838 - INFO - Starting NewsAPI collection for keyword: Nmap
+2025-04-09 13:32:32,883 - INFO - Starting NewsAPI collection for keyword: Wireshark
+2025-04-09 13:32:35,384 - INFO - Starting NewsAPI collection for keyword: Cobalt Strike
+2025-04-09 13:32:36,811 - INFO - Starting NewsAPI collection for keyword: Shodan
+2025-04-09 13:32:39,238 - INFO - Starting NewsAPI collection for keyword: VirusTotal
+2025-04-09 13:32:42,013 - INFO - Starting NewsAPI collection for keyword: AbuseIPDB
+2025-04-09 13:32:43,105 - INFO - Starting NewsAPI collection for keyword: ThreatCrowd
+2025-04-09 13:32:43,339 - INFO - Finished function: fetch_and_store_news
+2025-04-09 13:32:43,343 - INFO - Starting function: collect_from_rapidapi
+2025-04-09 13:32:43,350 - INFO - Starting function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 13:32:44,085 - INFO - Finished function: collect_from_rapidapi (ip: 117.131.215.118)
+2025-04-09 13:32:44,091 - INFO - Starting function: collect_from_rapidapi (domain: example.com)
+2025-04-09 13:32:44,429 - INFO - Finished function: collect_from_rapidapi (domain: example.com)
+2025-04-09 13:32:44,436 - INFO - Starting function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 13:32:45,002 - INFO - Finished function: collect_from_rapidapi (url: https://malicious-site.com)
+2025-04-09 13:32:45,007 - INFO - Starting function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 13:32:46,491 - INFO - Finished function: collect_from_rapidapi (hash: 44d88612fea8a8f36de82e1278abb02f)
+2025-04-09 13:32:46,498 - INFO - Finished function: collect_from_rapidapi
+2025-04-09 13:32:46,504 - INFO - Finished function: run_collection
+2025-04-09 13:33:46,551 - INFO - Starting function: run_collection
+2025-04-09 13:33:46,553 - INFO - Starting function: collect_from_praw
+2025-04-09 13:34:04,174 - INFO - Finished function: collect_from_praw
+2025-04-09 13:34:04,176 - INFO - Starting function: collect_from_rss
+2025-04-09 13:34:05,883 - INFO - Finished function: collect_from_rss
+2025-04-09 13:34:05,887 - INFO - Starting function: collect_from_rapidapi
+2025-04-09 13:34:05,890 - INFO - Finished function: collect_from_rapidapi
+2025-04-09 13:34:05,893 - INFO - Starting function: fetch_and_store_news
+2025-04-09 13:34:05,899 - INFO - Starting NewsAPI collection for keyword: cybersecurity
+2025-04-09 13:34:08,616 - INFO - Starting NewsAPI collection for keyword: infosec
+2025-04-09 13:34:11,160 - INFO - Starting NewsAPI collection for keyword: threat intelligence
+2025-04-09 13:34:13,520 - INFO - Starting NewsAPI collection for keyword: vulnerability
+2025-04-09 13:34:17,176 - INFO - Starting NewsAPI collection for keyword: exploit
+2025-04-09 13:34:19,828 - INFO - Starting NewsAPI collection for keyword: zero-day
+2025-04-09 13:34:22,441 - INFO - Starting NewsAPI collection for keyword: APT
+2025-04-09 13:34:25,005 - INFO - Starting NewsAPI collection for keyword: penetration testing
+2025-04-09 13:34:27,963 - INFO - Starting NewsAPI collection for keyword: network security
+2025-04-09 13:34:30,606 - INFO - Starting NewsAPI collection for keyword: firewall breach
+2025-04-09 13:34:33,570 - INFO - Starting NewsAPI collection for keyword: incident response
+2025-04-09 13:34:36,136 - INFO - Starting NewsAPI collection for keyword: ransomware
+2025-04-09 13:34:38,867 - INFO - Starting NewsAPI collection for keyword: phishing
+2025-04-09 13:34:41,431 - INFO - Starting NewsAPI collection for keyword: DDoS
+2025-04-09 13:34:44,026 - INFO - Starting NewsAPI collection for keyword: SQL injection
+2025-04-09 13:34:46,660 - INFO - Starting NewsAPI collection for keyword: man-in-the-middle attack
+2025-04-09 13:34:49,579 - INFO - Starting NewsAPI collection for keyword: social engineering
+2025-04-09 13:34:52,423 - INFO - Starting NewsAPI collection for keyword: supply chain attack
+2025-04-09 13:34:55,139 - INFO - Starting NewsAPI collection for keyword: malvertising
+2025-04-09 13:34:58,548 - INFO - Starting NewsAPI collection for keyword: brute force attack
+2025-04-09 13:35:01,143 - INFO - Starting NewsAPI collection for keyword: credential stuffing
+2025-04-09 13:35:04,251 - INFO - Starting NewsAPI collection for keyword: malware
+2025-04-09 13:35:07,324 - INFO - Starting NewsAPI collection for keyword: spyware
+2025-04-09 13:35:09,960 - INFO - Starting NewsAPI collection for keyword: adware
+2025-04-09 13:35:11,898 - INFO - Starting NewsAPI collection for keyword: trojan
+2025-04-09 13:35:14,630 - INFO - Starting NewsAPI collection for keyword: worm
+2025-04-09 13:35:17,219 - INFO - Starting NewsAPI collection for keyword: rootkit
+2025-04-09 13:35:19,828 - INFO - Starting NewsAPI collection for keyword: keylogger
+2025-04-09 13:35:20,327 - INFO - Starting NewsAPI collection for keyword: RAT
+2025-04-09 13:35:23,458 - INFO - Starting NewsAPI collection for keyword: ICS malware
+2025-04-09 13:35:26,032 - INFO - Starting NewsAPI collection for keyword: botnet
+2025-04-09 13:35:29,338 - INFO - Starting NewsAPI collection for keyword: backdoor
+2025-04-09 13:35:31,787 - INFO - Starting NewsAPI collection for keyword: CVE
+2025-04-09 13:35:35,055 - INFO - Starting NewsAPI collection for keyword: Indicators of Compromise
+2025-04-09 13:35:37,992 - INFO - Starting NewsAPI collection for keyword: IOC
+2025-04-09 13:35:40,644 - INFO - Starting NewsAPI collection for keyword: MD5 hash
+2025-04-09 13:35:42,634 - INFO - Starting NewsAPI collection for keyword: SHA256 hash
+2025-04-09 13:35:45,136 - INFO - Starting NewsAPI collection for keyword: IP address blacklist
+2025-04-09 13:35:45,966 - INFO - Starting NewsAPI collection for keyword: malicious domains
+2025-04-09 13:35:48,688 - INFO - Starting NewsAPI collection for keyword: malicious URLs
+2025-04-09 13:35:51,680 - INFO - Starting NewsAPI collection for keyword: threat actor
+2025-04-09 13:35:54,380 - INFO - Starting NewsAPI collection for keyword: hacker group
+2025-04-09 13:35:56,912 - INFO - Starting NewsAPI collection for keyword: APT group
+2025-04-09 13:35:59,537 - INFO - Starting NewsAPI collection for keyword: state-sponsored attack
+2025-04-09 13:36:02,198 - INFO - Starting NewsAPI collection for keyword: hacktivist
+2025-04-09 13:36:05,124 - INFO - Starting NewsAPI collection for keyword: cyber espionage
+2025-04-09 13:36:07,689 - INFO - Starting NewsAPI collection for keyword: black hat
+2025-04-09 13:43:33,611 - INFO - Starting function: run_collection
+2025-04-09 13:43:33,618 - INFO - Starting function: collect_from_praw
+2025-04-09 13:43:53,101 - INFO - Finished function: collect_from_praw
+2025-04-09 13:43:53,107 - INFO - Starting function: collect_from_rss
+2025-04-09 13:43:55,512 - INFO - Finished function: collect_from_rss
+2025-04-09 13:43:55,518 - INFO - Starting function: collect_from_rapidapi
+2025-04-09 13:43:55,522 - INFO - Finished function: collect_from_rapidapi
+2025-04-09 13:43:55,527 - INFO - Starting function: fetch_and_store_news
+2025-04-09 13:43:55,534 - INFO - Starting NewsAPI collection for keyword: cybersecurity
+2025-04-09 13:44:00,190 - INFO -  Successfully collected 0 new articles for keyword: cybersecurity
+2025-04-09 13:44:00,194 - INFO - Starting NewsAPI collection for keyword: infosec
+2025-04-09 13:44:04,236 - INFO -  Successfully collected 0 new articles for keyword: infosec
+2025-04-09 13:44:04,242 - INFO - Starting NewsAPI collection for keyword: threat intelligence
+2025-04-09 13:44:07,939 - INFO -  Successfully collected 0 new articles for keyword: threat intelligence
+2025-04-09 13:44:07,945 - INFO - Starting NewsAPI collection for keyword: vulnerability
+2025-04-09 13:44:11,471 - INFO -  Successfully collected 0 new articles for keyword: vulnerability
+2025-04-09 13:44:11,477 - INFO - Starting NewsAPI collection for keyword: exploit
+2025-04-09 13:44:14,909 - INFO -  Successfully collected 0 new articles for keyword: exploit
+2025-04-09 13:44:14,916 - INFO - Starting NewsAPI collection for keyword: zero-day
+2025-04-09 13:44:17,608 - INFO -  Successfully collected 0 new articles for keyword: zero-day
+2025-04-09 13:44:17,618 - INFO - Starting NewsAPI collection for keyword: APT
+2025-04-09 13:44:21,281 - INFO -  Successfully collected 0 new articles for keyword: APT
+2025-04-09 13:44:21,286 - INFO - Starting NewsAPI collection for keyword: penetration testing
