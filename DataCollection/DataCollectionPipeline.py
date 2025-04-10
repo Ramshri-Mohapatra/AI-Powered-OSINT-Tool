@@ -11,14 +11,26 @@ from pymongo import MongoClient
 from datetime import datetime
 import time
 import schedule
+from dotenv import load_dotenv
+import os
 
 
 # In[2]:
 
+load_dotenv()  # Loads .env file automatically
+
+# Usage
+NEWSAPI_KEY = os.getenv("NEWSAPI_KEY")
+RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY")
+REDDIT_CLIENT_ID = os.getenv("REDDIT_CLIENT_ID")
+REDDIT_CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
+MONGO_URI = os.getenv("MONGO_URI")
+
+
 
 # ==== MongoDB Setup ====
 try:
-    client = MongoClient("mongodb+srv://rskissan:HZIXkw1D5XOUxaS2@osintunctruc.p5itk5s.mongodb.net/?retryWrites=true&w=majority")
+    client = MongoClient(MONGO_URI)
     db = client["osint_db"]
     
     # Collections for each source
@@ -54,7 +66,7 @@ keywords = [
 # In[4]:
 
 
-NEWSAPI_KEY = "a287317e0ca94d568dd9fb178361187d"
+
 
 def fetch_and_store_news(keyword):
     try:
@@ -101,8 +113,8 @@ from datetime import datetime
 # ==== PRAW Reddit API Authentication ====
 try:
     reddit = praw.Reddit(
-        client_id="6abqWObNapOZUTboI38SMA",
-        client_secret="jvqQN0e285EOhw3pFWRkMsV7BN_lZA",
+        client_id=REDDIT_CLIENT_ID,
+        client_secret=REDDIT_CLIENT_SECRET,
         user_agent="osint_tool_v1"
     )
     print(" Connected to Reddit successfully")
@@ -110,7 +122,8 @@ except Exception as e:
     print(f" Error connecting to Reddit: {e}")
 
 # ==== Reddit Subreddits to Monitor ====
-subreddits_to_monitor = ["netsec", "cybersecurity", "hacking", "blueteamsec", "malware"]
+subreddits_to_monitor = ["netsec", "cybersecurity", "hacking", "blueteamsec", "malware",
+    "ReverseEngineering", "ThreatHunting", "OSINT", "securityCTF", "infosec"]
 
 # ==== PRAW Data Collection ====
 def collect_from_praw():
@@ -147,7 +160,17 @@ def collect_from_praw():
 # In[6]:
 
 
-rss_urls = ["https://krebsonsecurity.com/feed/", "https://threatpost.com/feed/"]
+rss_urls = ["https://krebsonsecurity.com/feed/",
+    "https://threatpost.com/feed/",
+    "https://www.bleepingcomputer.com/feed/",
+    "https://feeds.feedburner.com/TheHackersNews",
+    "https://www.darkreading.com/rss.xml",
+    "https://www.cisa.gov/uscert/ncas/alerts.xml",
+    "https://www.exploit-db.com/rss.xml",
+    "https://blog.malwarebytes.com/feed/",
+    "https://attack.mitre.org/blog/feed.xml",
+    "https://blog.talosintelligence.com/feeds/posts/default",
+    "https://securelist.com/feed/"]
 
 def collect_from_rss():
     try:
@@ -208,7 +231,7 @@ def collect_from_rapidapi(ioc_type, ioc_value):
             return
 
         headers = {
-            "x-rapidapi-key": "0ea5fe4d7fmsh0b2b8346715525cp1263f3jsn707750ed0fb2",
+            "x-rapidapi-key": RAPIDAPI_KEY,
             "x-rapidapi-host": "ioc-search.p.rapidapi.com"
         }
 

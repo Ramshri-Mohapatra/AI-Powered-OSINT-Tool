@@ -1,0 +1,22 @@
+# Secrets
+*.env
+*.key
+*.json
+pipeline_logs.log
+
+# Python junk
+__pycache__/
+*.pyc
+
+# Model/data weights
+*.pkl
+*.h5
+*.bin
+*.pt
+
+# Notebooks cache
+.ipynb_checkpoints/
+
+# IDE / OS garbage
+.vscode/
+.DS_Store
