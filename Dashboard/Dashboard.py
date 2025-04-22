@@ -92,7 +92,7 @@ def set_background_with_overlay(image_path):
 
 
 
-
+# Call it
 set_background_with_overlay(BG_IMAGE_PATH)
 
 cfg = {
@@ -139,7 +139,18 @@ EMAIL_RE          = re.compile(cfg["regex_patterns"]["email"])
 HASH_RE           = re.compile(cfg["regex_patterns"]["hash"])
 IP_PORT_RE        = re.compile(cfg["regex_patterns"]["ip_port"])
 
+# And your alias map:
+ALIAS_MAP = cfg["alias_map"]
 
+# Compile regex patterns (As the model can face some issues with indicators decided to use regex to deal with missed out words)
+DASH_RE = re.compile(cfg["regex_patterns"]["dashes"])
+OBFUSCATED_DOT_RE = re.compile(cfg["regex_patterns"]["obfuscated_dot"])
+MULTI_SPACE_RE = re.compile(cfg["regex_patterns"]["multi_space"])
+CVE_RE = re.compile(cfg["regex_patterns"]["cve"])
+URL_RE = re.compile(cfg["regex_patterns"]["url"], flags=re.IGNORECASE)
+EMAIL_RE = re.compile(cfg["regex_patterns"]["email"])
+HASH_RE = re.compile(cfg["regex_patterns"]["hash"])
+IP_PORT_RE = re.compile(cfg["regex_patterns"]["ip_port"])
 
 # Alias map (some cves can have nick name)
 ALIAS_MAP = cfg["alias_map"]
@@ -329,21 +340,26 @@ def get_highlighted_text(text: str, entities: list) -> str:
 # Load NER pipeline
 @st.cache_resource
 def load_ner():
-    # Pull your token from Streamlit secrets
-    hf_token = st.secrets["HF_TOKEN"]
+    # Load Hugging Face token
+    hf_token = os.getenv("HF_TOKEN") or st.secrets.get("huggingface", {}).get("HF_TOKEN")
+    if not hf_token:
+        st.error("Hugging Face token not found. Please set HF_TOKEN in secrets.toml.")
+        return None
+    
+    try:
+        tok = AutoTokenizer.from_pretrained(
+            "Rkdon11/Cybersecurity_ner_model",
+            token=hf_token
+        )
+        mdl = AutoModelForTokenClassification.from_pretrained(
+            "Rkdon11/Cybersecurity_ner_model",
+            token=hf_token
+        )
+        return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
+    except Exception as e:
+        st.error(f"Failed to load NER model: {str(e)}")
+        return None
 
-    # Load your fine‑tuned model from the Hub, authenticating with that token
-    tokenizer = AutoTokenizer.from_pretrained(
-        "Rkdon11/Cybersecurity_ner_model",
-        use_auth_token=hf_token
-    )
-    model = AutoModelForTokenClassification.from_pretrained(
-        "Rkdon11/Cybersecurity_ner_model",
-        use_auth_token=hf_token
-    )
-    return pipeline("ner", model=model, tokenizer=tokenizer, aggregation_strategy="first")
-
-# Then elsewhere in your code:
 ner_pipeline = load_ner()
 
 # Process article function for parallel processing

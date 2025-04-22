@@ -1,0 +1,10 @@
+streamlit
+altair
+transformers
+pymongo
+pandas
+python-dotenv
+schedule
+requests
+feedparser
+praw
