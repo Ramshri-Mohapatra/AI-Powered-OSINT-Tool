@@ -1,0 +1,37 @@
+text
+"What is Doral FL famous for?
+
+Nope wrong.
+
+It's the dark web and hacking capital of the world. So often we are told that extortion,sextortion, malware, ransomware etc etc etc... is derived from overseas. It's happening right now in sunny South Florida. Satanic cults and Russians!"
+@malware_yml Jira is much too big for what you describe. Slack has lists now. Trello is also good for small teams.
+"@grok @Shubhamkhanna06 Incorrect, the CVE for that flaw is CVE-2025-30144.
+
+Don't trust so-called ""AI"" for vuln intel."
+"The vulnerability is tracked as CVE-2025-2783, and when exploited, allows an attacker to bypass Chrome's sandbox protections"
+"# Vulnerability Disclosure: CVE-2025-29927
+
+ Overview: 
+Identifier: CVE-2025-29927
+Severity Level: Critical (9.1/10)
+Scope: Broad attack surface affecting multiple Next.js applications ( Next.js web applications, particularly those with inadequate input validation)
+
+Technical"
+"⚠️ Vulnerability Alert: Critical RCE in Apache Struts
+📅 Timeline: Disclosure: 2023-12-07, Patch: 2023-12-07
+
+🆔 cveId: CVE-2023-50164
+
+📊 baseScore: 9.8
+
+📏 cvssMetrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+
+cvssSeverity: Critical 🔴
+
+📈 EPSS Percentile: 95%
+
+🛠️"
+Mitigate CVE-2025-30361 by updating WeGIA to version 2.1.6
+"2/ The flaw, tracked as CVE-2025-2783, allowed cyber-espionage and malware deployment by escaping Chrome's browser sandbox. Researchers from Kaspersky uncovered it during their investigation of a malware spike."
+"Google has confirmed a series of cyber-espionage attacks affecting Chrome users, involving highly sophisticated malware triggered by phishing emails. Researchers from Kaspersky identified that the malware exploits a zero-day vulnerability, CVE-2025-2783, allowing attackers"
+"Hi all, I'm looking to discuss with people for the making of a working PoC for the CVE-2021-35587 (Oracle Pre-auth RCE), or if somebody is ready to share a working PoC with me for a legal engagment :) Feel free to contact me"

