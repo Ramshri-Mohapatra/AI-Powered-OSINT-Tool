@@ -15,10 +15,10 @@ import textwrap
 import base64
 import os
 
-# Get the folder where this Dashboard.py lives
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Build the full path to your image in the same folder
+PATTERNS_PATH = os.path.join(BASE_DIR, "patterns.json")
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
 # MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://rskissan:HZIXkw1D5XOUxaS2@osintunctruc.p5itk5s.mongodb.net/?retryWrites=true&w=majority")
@@ -96,7 +96,7 @@ def set_background_with_overlay(image_path):
 set_background_with_overlay(BG_IMAGE_PATH)
 
 # Load patterns
-with open("patterns.json", "r") as f:
+with open(PATTERNS_PATH, "r") as f:
     cfg = json.load(f)
 
 # Compile regex patterns (As the model can face some issues with indicators decided to use regex to deal with missed out words)
