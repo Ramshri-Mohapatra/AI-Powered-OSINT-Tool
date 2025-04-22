@@ -329,17 +329,21 @@ def get_highlighted_text(text: str, entities: list) -> str:
 # Load NER pipeline
 @st.cache_resource
 def load_ner():
-    try:
-        tok = AutoTokenizer.from_pretrained("Rkdon11/Cybersecurity_ner_model")
-        mdl = AutoModelForTokenClassification.from_pretrained("Rkdon11/Cybersecurity_ner_model") #this is the finalised model after training.
-        return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
-    except Exception as e:
-        st.error(f"Failed to load NER model: {str(e)}")
-        st.info("Falling back to a default NER model...")
-        tok = AutoTokenizer.from_pretrained("dslim/bert-base-NER")
-        mdl = AutoModelForTokenClassification.from_pretrained("dslim/bert-base-NER")
-        return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
+    # Pull your token from Streamlit secrets
+    hf_token = st.secrets["HF_TOKEN"]
 
+    # Load your fine‑tuned model from the Hub, authenticating with that token
+    tokenizer = AutoTokenizer.from_pretrained(
+        "Rkdon11/Cybersecurity_ner_model",
+        use_auth_token=hf_token
+    )
+    model = AutoModelForTokenClassification.from_pretrained(
+        "Rkdon11/Cybersecurity_ner_model",
+        use_auth_token=hf_token
+    )
+    return pipeline("ner", model=model, tokenizer=tokenizer, aggregation_strategy="first")
+
+# Then elsewhere in your code:
 ner_pipeline = load_ner()
 
 # Process article function for parallel processing
