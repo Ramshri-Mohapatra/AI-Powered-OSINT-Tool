@@ -18,7 +18,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-PATTERNS_PATH = os.path.join(BASE_DIR, "patterns.json")
+
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
 # MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://rskissan:HZIXkw1D5XOUxaS2@osintunctruc.p5itk5s.mongodb.net/?retryWrites=true&w=majority")
@@ -92,22 +92,54 @@ def set_background_with_overlay(image_path):
 
 
 
-# Call it
+
 set_background_with_overlay(BG_IMAGE_PATH)
 
-# Load patterns
-with open(PATTERNS_PATH, "r") as f:
-    cfg = json.load(f)
+cfg = {
+    "regex_patterns": {
+        "dashes": "[–—−‑]",
+        "obfuscated_dot": r"\[\.\]",
+        "multi_space": r"\s{2,}",
+        "cve": r"\bCVE-\d{4}-\d{4,5}\b",
+        "url": r"\bhttps?://[A-Za-z0-9\-._~:/?#[\]@!$&'()*+,;=%]+\b",
+        "email": r"\b[\w.+-]+@[\w-]+\.[\w.-]+\b",
+        "hash": r"\b(?:[A-Fa-f0-9]{32}|[A-Fa-f0-9]{40}|[A-Fa-f0-9]{64})\b",
+        "ip_port": r"\b(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d):(?!0)(?:[1-9]\d{0,3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])\b"
+    },
+    "alias_map": {
+        "Heartbleed":      "CVE-2014-0160",
+        "Shellshock":      "CVE-2014-6271",
+        "EternalBlue":     "CVE-2017-0144",
+        "BlueKeep":        "CVE-2019-0708",
+        "Meltdown":        "CVE-2017-5754",
+        "Spectre":         "CVE-2017-5753",
+        "KRACK":           "CVE-2017-13077",
+        "DROWN":           "CVE-2016-0800",
+        "FREAK":           "CVE-2015-0204",
+        "POODLE":          "CVE-2014-3566",
+        "Log4Shell":       "CVE-2021-44228",
+        "LogJam":          "CVE-2021-44228",
+        "Follina":         "CVE-2022-30190",
+        "PrintNightmare":  "CVE-2021-34527",
+        "ProxyLogon":      "CVE-2021-26855",
+        "ProxyShell":      "CVE-2021-34473",
+        "ZeroLogon":       "CVE-2020-1472",
+        "Dirty COW":       "CVE-2016-5195",
+        "Dirty Pipe":      "CVE-2022-0847"
+    }
+}
 
-# Compile regex patterns (As the model can face some issues with indicators decided to use regex to deal with missed out words)
-DASH_RE = re.compile(cfg["regex_patterns"]["dashes"])
+# Now compile all your regexes directly:
+DASH_RE           = re.compile(cfg["regex_patterns"]["dashes"])
 OBFUSCATED_DOT_RE = re.compile(cfg["regex_patterns"]["obfuscated_dot"])
-MULTI_SPACE_RE = re.compile(cfg["regex_patterns"]["multi_space"])
-CVE_RE = re.compile(cfg["regex_patterns"]["cve"])
-URL_RE = re.compile(cfg["regex_patterns"]["url"], flags=re.IGNORECASE)
-EMAIL_RE = re.compile(cfg["regex_patterns"]["email"])
-HASH_RE = re.compile(cfg["regex_patterns"]["hash"])
-IP_PORT_RE = re.compile(cfg["regex_patterns"]["ip_port"])
+MULTI_SPACE_RE    = re.compile(cfg["regex_patterns"]["multi_space"])
+CVE_RE            = re.compile(cfg["regex_patterns"]["cve"])
+URL_RE            = re.compile(cfg["regex_patterns"]["url"], flags=re.IGNORECASE)
+EMAIL_RE          = re.compile(cfg["regex_patterns"]["email"])
+HASH_RE           = re.compile(cfg["regex_patterns"]["hash"])
+IP_PORT_RE        = re.compile(cfg["regex_patterns"]["ip_port"])
+
+
 
 # Alias map (some cves can have nick name)
 ALIAS_MAP = cfg["alias_map"]
