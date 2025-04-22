@@ -13,7 +13,13 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 import textwrap
 import base64
+import os
 
+# Get the folder where this Dashboard.py lives
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Build the full path to your image in the same folder
+BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
 # MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://rskissan:HZIXkw1D5XOUxaS2@osintunctruc.p5itk5s.mongodb.net/?retryWrites=true&w=majority")
 db = client["osint_db"]
@@ -87,7 +93,7 @@ def set_background_with_overlay(image_path):
 
 
 # Call it
-set_background_with_overlay("illustration-rain-futuristic-city.jpg")
+set_background_with_overlay(BG_IMAGE_PATH)
 
 # Load patterns
 with open("patterns.json", "r") as f:
