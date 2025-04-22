@@ -1,7 +1,6 @@
 # Secrets
 *.env
 *.key
-*.json
 pipeline_logs.log
 
 # Python junk

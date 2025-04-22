@@ -1,0 +1,33 @@
+{
+  "regex_patterns": {
+    "dashes": "[–—−‑]",
+    "obfuscated_dot": "\\[\\.\\]",
+    "multi_space": "\\s{2,}",
+    "cve": "\\bCVE-\\d{4}-\\d{4,5}\\b",
+    "url": "\\bhttps?://[A-Za-z0-9\\-._~:/?#[\\]@!$&'()*+,;=%]+\\b",
+    "email": "\\b[\\w.+-]+@[\\w-]+\\.[\\w.-]+\\b",
+    "hash": "\\b(?:[A-Fa-f0-9]{32}|[A-Fa-f0-9]{40}|[A-Fa-f0-9]{64})\\b",
+    "ip_port": "\\b(?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d):(?!0)(?:[1-9]\\d{0,3}|[1-5]\\d{4}|6[0-4]\\d{3}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])\\b"
+  },
+  "alias_map": {
+    "Heartbleed": "CVE-2014-0160",
+    "Shellshock": "CVE-2014-6271",
+    "EternalBlue": "CVE-2017-0144",
+    "BlueKeep": "CVE-2019-0708",
+    "Meltdown": "CVE-2017-5754",
+    "Spectre": "CVE-2017-5753",
+    "KRACK": "CVE-2017-13077",
+    "DROWN": "CVE-2016-0800",
+    "FREAK": "CVE-2015-0204",
+    "POODLE": "CVE-2014-3566",
+    "Log4Shell": "CVE-2021-44228",
+    "LogJam": "CVE-2021-44228",
+    "Follina": "CVE-2022-30190",
+    "PrintNightmare": "CVE-2021-34527",
+    "ProxyLogon": "CVE-2021-26855",
+    "ProxyShell": "CVE-2021-34473",
+    "ZeroLogon": "CVE-2020-1472",
+    "Dirty COW": "CVE-2016-5195",
+    "Dirty Pipe": "CVE-2022-0847"
+  }
+}
