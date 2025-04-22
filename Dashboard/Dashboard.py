@@ -18,7 +18,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-PATTERNS_PATH = os.path.join(BASE_DIR, "patterns1.json")
+PATTERNS_PATH = os.path.join(BASE_DIR, "patterns.json")
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
 # MongoDB connection
 client = pymongo.MongoClient("mongodb+srv://rskissan:HZIXkw1D5XOUxaS2@osintunctruc.p5itk5s.mongodb.net/?retryWrites=true&w=majority")
