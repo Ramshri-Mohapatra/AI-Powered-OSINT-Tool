@@ -15,12 +15,12 @@ import textwrap
 import base64
 import os
 
-
+#background
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
-# MongoDB connection
+
+
+# monngoDB
 client = pymongo.MongoClient("mongodb+srv://rskissan:HZIXkw1D5XOUxaS2@osintunctruc.p5itk5s.mongodb.net/?retryWrites=true&w=majority")
 db = client["osint_db"]
 feeds = {
@@ -28,8 +28,21 @@ feeds = {
     "News": db["newsapi_data"],
 }
 
-# Sidebar navigation
+#Page changer
 page = st.sidebar.radio("Go to:", ["📝 Dashboard", "🌐 Live Insights"])
+
+
+
+#───────── AI-assisted via ChatGPT on 2025-04-20 ─────────
+# Prompt: “Hey you are a streamlit develloper, I want a basic code for my background overlay so i can make changes to it llike blurry background translucent side bar”
+# # Tweaks:
+# - Enhanced UI customization beyond basic version:
+# - Added translucent styling for input elements like TextInput, TextArea, FileUploader, and Buttons.
+# - Applied custom border styling (light white border) around input components.
+# - Enforced white text color in inputs and buttons using !important.
+# - Styled buttons with bold white text and rounded corners.
+# - Increased sidebar blur intensity (`blur(10px)`) and added subtle border for cntrast.
+# - Kept background blur same looked good.
 
 def set_background_with_overlay(image_path):
     with open(image_path, "rb") as img_file:
@@ -43,7 +56,7 @@ def set_background_with_overlay(image_path):
         color: #ffffff;
     }}
 
-    /* Blurred background image with dark overlay */
+    /*blured background image*/
     .stApp::before {{
         content: "";
         position: fixed;
@@ -91,10 +104,14 @@ def set_background_with_overlay(image_path):
     st.markdown(custom_css, unsafe_allow_html=True)
 
 
-
-# Call it
+#background settings
 set_background_with_overlay(BG_IMAGE_PATH)
 
+
+#───────── AI-assisted via ChatGPT on 2025-04-20 ─────────
+# Prompt: “You are a cybersecurity analyst. Can you give me a list of alias names for CVEs . pls use the web to search names”
+# Prompt: “Can You help me refine my regex for the basic regex i have provided you for the identifying the dashes, obfuscated_dot, multi_space, cve, url, email, hash, ip_port”
+# I came across many nick names for CVEs and anted my model to get them as vulnerabilities and not malware or organisation name. so used to get the list
 cfg = {
     "regex_patterns": {
         "dashes": "[–—−‑]",
@@ -129,20 +146,8 @@ cfg = {
     }
 }
 
-# Now compile all your regexes directly:
-DASH_RE           = re.compile(cfg["regex_patterns"]["dashes"])
-OBFUSCATED_DOT_RE = re.compile(cfg["regex_patterns"]["obfuscated_dot"])
-MULTI_SPACE_RE    = re.compile(cfg["regex_patterns"]["multi_space"])
-CVE_RE            = re.compile(cfg["regex_patterns"]["cve"])
-URL_RE            = re.compile(cfg["regex_patterns"]["url"], flags=re.IGNORECASE)
-EMAIL_RE          = re.compile(cfg["regex_patterns"]["email"])
-HASH_RE           = re.compile(cfg["regex_patterns"]["hash"])
-IP_PORT_RE        = re.compile(cfg["regex_patterns"]["ip_port"])
 
-# And your alias map:
-ALIAS_MAP = cfg["alias_map"]
-
-# Compile regex patterns (As the model can face some issues with indicators decided to use regex to deal with missed out words)
+#REGEX SAVED MY LIFE :)
 DASH_RE = re.compile(cfg["regex_patterns"]["dashes"])
 OBFUSCATED_DOT_RE = re.compile(cfg["regex_patterns"]["obfuscated_dot"])
 MULTI_SPACE_RE = re.compile(cfg["regex_patterns"]["multi_space"])
@@ -153,9 +158,9 @@ HASH_RE = re.compile(cfg["regex_patterns"]["hash"])
 IP_PORT_RE = re.compile(cfg["regex_patterns"]["ip_port"])
 
 # Alias map (some cves can have nick name)
-ALIAS_MAP = cfg["alias_map"]
+ALIAS_MAP = cfg["alias_map"] 
 
-# Entity colors
+# colors for different labels
 ENTITY_COLORS = {
     "Malware": "#ff6b6b",
     "Vulnerability": "#1e90ff",
@@ -164,14 +169,16 @@ ENTITY_COLORS = {
     "System": "#a29bfe"
 }
 
-# Helper functions
-def apply_aliases(text: str) -> str:
+# adding the regex along with my ner model 
+def changeNickNames(text: str) -> str:
     for nick, cve in ALIAS_MAP.items():
         pattern = re.compile(rf"(?<![A-Za-z0-9]){re.escape(nick)}(?![A-Za-z0-9])", re.IGNORECASE)
         text = pattern.sub(cve, text)
     return text
-
-def normalize_cve_format(text: str) -> str:
+#some CVES van have .,special - or _ hence the function replaces them with '-'
+#───────── AI-assisted via ChatGPT on 2025-04-20 ─────────
+# Prompt: “can You help me write an function for normalising CVE foormats into the regular CVE-XXXX-XXXX”
+def correctCVE(text: str) -> str:
     text = DASH_RE.sub("-", text)
     text = re.sub(
         r"CVE[\s:_\-]+(\d{4})[\s:._\-]*(\d{4,5})",
@@ -208,12 +215,15 @@ def normalize_cve_format(text: str) -> str:
     )
     return text
 
-def normalize_obfuscated_urls(text: str) -> str:
+
+#In unstructured data came across see obfuscated urls model missing these
+def correctURL(text: str) -> str:
     text = re.sub(r'\bhxxp(s?)://', r'http\1://', text, flags=re.IGNORECASE)
     text = OBFUSCATED_DOT_RE.sub(".", text)
     return re.sub(r'\.{2,}', '.', text)
 
-def extract_url_indicators(text: str, min_score=0.6, max_score=0.9):
+#tmissing sometimes
+def extractUrlIndicators(text: str, min_score=0.6, max_score=0.9):
     hits = []
     for m in URL_RE.finditer(text):
         score = round(random.uniform(min_score, max_score), 4)
@@ -225,8 +235,8 @@ def extract_url_indicators(text: str, min_score=0.6, max_score=0.9):
             "score": score
         })
     return hits
-
-def extract_email_indicators(text: str, min_score=0.6, max_score=0.9):
+#missing a lot
+def extractGmailIndicators(text: str, min_score=0.6, max_score=0.9):
     hits = []
     for m in EMAIL_RE.finditer(text):
         score = round(random.uniform(min_score, max_score), 4)
@@ -239,7 +249,8 @@ def extract_email_indicators(text: str, min_score=0.6, max_score=0.9):
         })
     return hits
 
-def extract_hash_indicators(text: str, min_score=0.6, max_score=0.9):
+#if model doesnt catch
+def extractHashIndicators(text: str, min_score=0.6, max_score=0.9):
     hits = []
     for m in HASH_RE.finditer(text):
         score = round(random.uniform(min_score, max_score), 4)
@@ -251,8 +262,8 @@ def extract_hash_indicators(text: str, min_score=0.6, max_score=0.9):
             "score": score
         })
     return hits
-
-def extract_ipport_indicators(text: str, min_score=0.6, max_score=0.9):
+#fdoesnt catch
+def extractIPindicators(text: str, min_score=0.6, max_score=0.9):
     hits = []
     for m in IP_PORT_RE.finditer(text):
         score = round(random.uniform(min_score, max_score), 4)
@@ -265,12 +276,14 @@ def extract_ipport_indicators(text: str, min_score=0.6, max_score=0.9):
         })
     return hits
 
-def fix_spacing(results: list, original_text: str) -> list:
+#tokenisation fix
+def fixSpacing(results: list, original_text: str) -> list:
     for ent in results:
         ent["word"] = original_text[ent["start"]:ent["end"]]
     return results
 
-def merge_adjacent_entities(results):
+# useless function
+def mergeEntities(results):
     merged = []
     for ent in sorted(results, key=lambda e: e["start"]):
         if merged and ent["entity_group"] == merged[-1]["entity_group"] \
@@ -283,30 +296,33 @@ def merge_adjacent_entities(results):
             merged.append(ent.copy())
     return merged
 
-def get_highlighted_text(text: str, entities: list) -> str:
+#To highlight the texts on first age
+def LabelText(text: str, entities: list) -> str:
     from collections import defaultdict
 
+    # First, I’m setting up a dictionary to map character positions in the text
+    # to either the start or end of an entity span. This helps us know when to open/close highlights.
     offset_map = defaultdict(list)
-    for ent in entities:
-        offset_map[ent["start"]].append(("start", ent))
-        offset_map[ent["end"]].append(("end", ent))
+    for x in entities:
+        offset_map[x["start"]].append(("start", x))
+        offset_map[x["end"]].append(("end", x))
 
     html_out = []
     open_spans = []
 
     for i, ch in enumerate(text):
         if i in offset_map:
-            # Close existing spans first
-            for action, ent in sorted(offset_map[i], key=lambda x: x[0] == "end"):
+            # need to close existing spans first
+            for action, x in sorted(offset_map[i], key=lambda x: x[0] == "end"):
                 if action == "end":
                     html_out.append("</span>")
                     if open_spans:
                         open_spans.pop()
 
-            # Then open new ones
-            for action, ent in sorted(offset_map[i], key=lambda x: x[0] != "start"):
+            # Then need to open new ones
+            for action, x in sorted(offset_map[i], key=lambda x: x[0] != "start"):
                 if action == "start":
-                    color = ENTITY_COLORS.get(ent["entity_group"], "#e0e0e0")
+                    color = ENTITY_COLORS.get(x["entity_group"], "#e0e0e0")
                     html_out.append(
                             f"<span style='"
                             f"background-color:{color}; "
@@ -316,11 +332,11 @@ def get_highlighted_text(text: str, entities: list) -> str:
                             f"display:inline; "
                             f"line-height:1.2; "
                             f"word-break:break-word;' "
-                            f"title='{ent['entity_group']}'>"
+                            f"title='{x['entity_group']}'>"
                         )
-                    open_spans.append(ent["entity_group"])
+                    open_spans.append(x["entity_group"])
 
-        # Escape HTML characters
+        # Escape the HTML characters
         if ch == "<":
             html_out.append("&lt;")
         elif ch == ">":
@@ -330,49 +346,37 @@ def get_highlighted_text(text: str, entities: list) -> str:
         else:
             html_out.append(ch)
 
-    # Close any remaining open spans
+    # Close any remaining if left open spans
     while open_spans:
         html_out.append("</span>")
         open_spans.pop()
 
     return "".join(html_out)
 
-# Load NER pipeline
+# load ner 
 @st.cache_resource
-def load_ner():
-    # Load Hugging Face token
-    hf_token = os.getenv("HF_TOKEN") or st.secrets.get("huggingface", {}).get("HF_TOKEN")
-    if not hf_token:
-        st.error("Hugging Face token not found. Please set HF_TOKEN in secrets.toml.")
-        return None
-    
+def loadNER():
     try:
-        tok = AutoTokenizer.from_pretrained(
-            "Rkdon11/Cybersecurity_ner_model",
-            token=hf_token
-        )
-        mdl = AutoModelForTokenClassification.from_pretrained(
-            "Rkdon11/Cybersecurity_ner_model",
-            token=hf_token
-        )
+        tok = AutoTokenizer.from_pretrained("Rkdon11/Cybersecurity_ner_model")
+        mdl = AutoModelForTokenClassification.from_pretrained("Rkdon11/Cybersecurity_ner_model") #this is the finalised model after training.Published on Github
         return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
     except Exception as e:
         st.error(f"Failed to load NER model: {str(e)}")
-        return None
+        st.info("Falling back to a default NER model...")
 
-ner_pipeline = load_ner()
+ner_pipeline = loadNER()
 
-# Process article function for parallel processing
-def process_article(feed_name, text, ner_pipeline):
-    cleaned = normalize_cve_format(normalize_obfuscated_urls(apply_aliases(text)))[:5000]
+# live insight. Ic ant code so much solution!
+def processArticle(feed_name, text, ner_pipeline):
+    cleaned = correctCVE(correctURL(changeNickNames(text)))[:5000]
     ents = ner_pipeline(cleaned)
-    ents = fix_spacing(ents, cleaned)
+    ents = fixSpacing(ents, cleaned)
 
     for extractor in (
-        extract_url_indicators,
-        extract_email_indicators,
-        extract_hash_indicators,
-        extract_ipport_indicators
+        extractUrlIndicators,
+        extractGmailIndicators,
+        extractHashIndicators,
+        extractIPindicators
     ):
         for hit in extractor(cleaned):
             if not any(
@@ -392,14 +396,15 @@ def process_article(feed_name, text, ner_pipeline):
     df["feed"] = feed_name
     return df, (feed_name, cleaned, df.to_dict("records"))
 
-# Functios For rendering two different pages
-def render_dashboard():
 
-    st.title("🕵️ AI-Powered-OSINT-Tool")
+def dashboard():
+
+    st.title("VIGIL-AI")
     st.markdown("Enter threat intel text or upload a .txt to extract malware, CVEs, URLs, etc.")
 
     with st.sidebar:
         st.header("🔎 Filters")
+        #slider
         min_score = st.slider(
             "Minimum confidence score",
             min_value=0.0,
@@ -407,6 +412,7 @@ def render_dashboard():
             value=0.7,
             step=0.01
         )
+        #select labels 
         st.markdown("**Entity types to include:**")
         selected_groups = []
         for entity, color in ENTITY_COLORS.items():
@@ -431,41 +437,43 @@ def render_dashboard():
     if uploaded:
         raw = uploaded.read().decode("utf-8")
 
+    #xtract button
     if st.button("Extract Entities"):
         if not raw.strip():
             st.warning("Please enter some text!")
         else:
             with st.spinner("Processing…"):
-                aliased = apply_aliases(raw)
-                deobf = normalize_obfuscated_urls(aliased)
-                cleaned = normalize_cve_format(deobf)
+                nickName = changeNickNames(raw)
+                cveName = correctURL(nickName)
+                cleaned = correctCVE(cveName)
+                
 
                 st.markdown("### 🧼 Preprocessed Input Text")
                 st.code(cleaned, language="text")
 
                 ents = ner_pipeline(cleaned)
-                ents = fix_spacing(ents, cleaned)
+                ents = fixSpacing(ents, cleaned)
 
                 if "Indicator" in selected_groups:
-                    for h in extract_url_indicators(cleaned, 0.7, 0.8):
+                    for h in extractUrlIndicators(cleaned, 0.7, 0.8):
                         if h["score"] >= min_score and not any(
                             r["start"] == h["start"] and r["end"] == h["end"]
                             for r in ents if r["entity_group"] == "Indicator"
                         ):
                             ents.append(h)
-                    for h in extract_email_indicators(cleaned, 0.8, 0.9):
+                    for h in extractGmailIndicators(cleaned, 0.8, 0.9):
                         if h["score"] >= min_score and not any(
                             r["start"] == h["start"] and r["end"] == h["end"]
                             for r in ents if r["entity_group"] == "Indicator"
                         ):
                             ents.append(h)
-                    for h in extract_hash_indicators(cleaned, 0.8, 0.9):
+                    for h in extractHashIndicators(cleaned, 0.8, 0.9):
                         if h["score"] >= min_score and not any(
                             r["start"] == h["start"] and r["end"] == h["end"]
                             for r in ents if r["entity_group"] == "Indicator"
                         ):
                             ents.append(h)
-                    for h in extract_ipport_indicators(cleaned, 0.7, 0.8):
+                    for h in extractIPindicators(cleaned, 0.7, 0.8):
                         if h["score"] >= min_score and not any(
                             r["start"] == h["start"] and r["end"] == h["end"]
                             for r in ents if r["entity_group"] == "Indicator"
@@ -476,6 +484,7 @@ def render_dashboard():
                     e for e in ents
                     if e["entity_group"] in selected_groups and e["score"] >= min_score
                 ]
+                #ents = mergeEntities(ents)
 
                 df = (
                     pd.DataFrame(ents)[["entity_group", "word", "score", "start", "end"]]
@@ -496,19 +505,21 @@ def render_dashboard():
                     domain=list(ENTITY_COLORS.keys()),
                     range=list(ENTITY_COLORS.values())
                 )
+
+                #visualisation for the threat intelligence gathered
                 chart = (
                     alt.Chart(count_df)
-                    .mark_bar(size=50)
+                    .mark_bar(size=30)
                     .encode(
-                        x=alt.X("entity_group:N", title="Entity Type"),
-                        y=alt.Y("count:Q", title="Count"),
+                        X=alt.X("entity_group:N", title="Entity Type"),
+                        Y=alt.Y("count:Q", title="Count"),
                         color=alt.Color(
                             "entity_group:N",
                             scale=color_scale,
                             legend=None
                         )
                     )
-                    .properties(width=600, height=300, title="Entity Graph")
+                    .properties(width=595, height=291, title="Entity Graph")
                 )
 
                 records = filtered_df.to_dict("records")
@@ -526,7 +537,7 @@ def render_dashboard():
                     line-height:1.4;
                     color: white;
                 ">
-                {get_highlighted_text(cleaned, records)}
+                {LabelText(cleaned, records)}
                 </div>
                 """
                 st.markdown("### ✨ Highlighted Entities in Text")
@@ -539,7 +550,7 @@ def render_dashboard():
                 csv = filtered_df[["entity_group", "word", "score"]].to_csv(index=False).encode("utf-8")
                 st.download_button("📥 Download CSV", csv, "entities.csv", "text/csv")
 
-def render_live_insights():
+def liveInsights():
     st.title("🌐 Live Insights")
     st.markdown("Fetch the most recent articles from each feed and run NER + regex fallbacks.")
 
@@ -570,7 +581,7 @@ def render_live_insights():
             if not docs:
                 st.info("No articles found.")
                 return
-            #Display raw articles in a dropdown
+            #Display raw articles 
             with st.expander("Raw Articles", expanded=False):
                 for feed_name, text in docs:
                     st.markdown(f"**Feed: {feed_name}**")
@@ -578,25 +589,27 @@ def render_live_insights():
 
             all_entities = []
             previews = []
-            with ThreadPoolExecutor(max_workers=4) as executor:
-                results = executor.map(lambda x: process_article(x[0], x[1], ner_pipeline), docs)
-                for df, preview in results:
-                    all_entities.append(df)
-                    previews.append(preview)
 
+            # Process each document one by one
+            for feed_name, text in docs:
+                df, preview = processArticle(feed_name, text, ner_pipeline)
+                all_entities.append(df)
+                previews.append(preview)
+
+            # Combine all the individual DataFrames into one
             all_entities = pd.concat(all_entities, ignore_index=True)
 
-            # Display all extracted entities in a dropdown
+            #all extracted entities in a dropdown
             with st.expander("All Extracted Entities", expanded=False):
                 st.dataframe(all_entities)
 
-            # Show counts of entities by type in a dropdown
+            #counts of entities by type in a dropdown
             with st.expander("Entity Counts by Type", expanded=False):
                 entity_counts = all_entities["entity_group"].value_counts().reset_index()
                 entity_counts.columns = ["Entity Type", "Count"]
                 st.dataframe(entity_counts)
 
-            # Initialize session state for chart_group
+            
             if "chart_group" not in st.session_state:
                 st.session_state.chart_group = None
 
@@ -622,7 +635,7 @@ def render_live_insights():
 
             chart_group = st.session_state.chart_group
 
-            # Prepare the  DataFrame for Chhart
+            # Preparing the  DataFrame for Chhart
             all_feeds = list(feeds.keys()) if source == "All" else [source]
             chart_df = (
                 all_entities[all_entities["entity_group"] == chart_group]
@@ -631,7 +644,7 @@ def render_live_insights():
                 .reset_index(name="unique_count")
             )
 
-            # Ensure all feeds are represented, even with zero counts
+            # Ensuring all feeds are represented, even with zero counts
             chart_df = pd.DataFrame({"feed": all_feeds}).merge(
                 chart_df, on="feed", how="left"
             ).fillna({"unique_count": 0})
@@ -640,7 +653,7 @@ def render_live_insights():
             with st.expander("Chart Data", expanded=False):
                 st.dataframe(chart_df)
 
-            # Define color scale for feeds
+            # color scale for feeds
             feed_color_scale = alt.Scale(
                 domain=all_feeds,
                 range=["#ff6b6b", "#1e90ff", "#2ed573"]  
@@ -654,12 +667,12 @@ def render_live_insights():
                     y=alt.Y("unique_count:Q", title=f"Unique “{chart_group}” Count"),
                     color=alt.Color("feed:N", scale=feed_color_scale, legend=None),
                 )
-                .properties(width=600, height=300, title=f"Unique {chart_group} by Feed")
+                .properties(width=565, height=285.5, title=f"Unique {chart_group} by Feed")
             )
             st.altair_chart(chart, use_container_width=True)
 
             st.sidebar.markdown("---")
-            st.sidebar.markdown("#### Entity Legend")
+            st.sidebar.markdown("Entity Legend")#for the user to undertand the labels
             for entity, color in ENTITY_COLORS.items():
                 st.sidebar.markdown(
                     f"""
@@ -674,7 +687,7 @@ def render_live_insights():
             st.markdown("### Latest articles preview with highlights")
             for feed_name, cleaned, recs in previews:
                 st.subheader(feed_name)
-                highlighted = get_highlighted_text(cleaned, recs)
+                highlighted = LabelText(cleaned, recs)
                 st.markdown(
                     f"<div style='padding:0.5em; background:#1e1e1e;'>{highlighted}</div>",
                     unsafe_allow_html=True
@@ -683,8 +696,8 @@ def render_live_insights():
         st.error(f"An error occurred: {str(e)}")
 
 
-# Main page logic
+# the main page 
 if page == "📝 Dashboard":
-    render_dashboard()
+    dashboard()
 elif page == "🌐 Live Insights":
-    render_live_insights()
+    liveInsights()
