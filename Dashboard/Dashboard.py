@@ -18,10 +18,10 @@ import os
 #background
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
-
+mongo_uri = st.secrets["MONGO"]["URI"]
 
 # monngoDB
-client = pymongo.MongoClient("mongodb+srv://rskissan:HZIXkw1D5XOUxaS2@osintunctruc.p5itk5s.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient(mongo_uri)
 db = client["osint_db"]
 feeds = {
     "Reddit": db["reddit_data"],
