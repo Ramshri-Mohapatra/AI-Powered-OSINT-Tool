@@ -1,5 +1,5 @@
 # Secrets
-*.env
+.env
 .streamlit/secrets.toml
 *.key
 pipeline_logs.log
