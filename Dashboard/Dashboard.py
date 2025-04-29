@@ -511,8 +511,8 @@ def dashboard():
                     alt.Chart(count_df)
                     .mark_bar(size=30)
                     .encode(
-                        X=alt.X("entity_group:N", title="Entity Type"),
-                        Y=alt.Y("count:Q", title="Count"),
+                        x=alt.X("entity_group:N", title="Entity Type"),
+                        y=alt.Y("count:Q", title="Count"),
                         color=alt.Color(
                             "entity_group:N",
                             scale=color_scale,
