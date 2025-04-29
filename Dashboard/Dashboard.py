@@ -13,15 +13,17 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 import textwrap
 import base64
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
 #background
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
-mongo_uri = st.secrets["MONGO"]["URI"]
 
+MONGO_URI = os.getenv("MONGO_URI")
 # monngoDB
-client = pymongo.MongoClient(mongo_uri)
+client = pymongo.MongoClient(MONGO_URI)
 db = client["osint_db"]
 feeds = {
     "Reddit": db["reddit_data"],
@@ -102,10 +104,12 @@ def set_background_with_overlay(image_path):
     </style>
     """
     st.markdown(custom_css, unsafe_allow_html=True)
-
-
 #background settings
 set_background_with_overlay(BG_IMAGE_PATH)
+
+
+
+
 
 
 #───────── AI-assisted via ChatGPT on 2025-04-20 ─────────
@@ -145,8 +149,6 @@ cfg = {
         "Dirty Pipe":      "CVE-2022-0847"
     }
 }
-
-
 #REGEX SAVED MY LIFE :)
 DASH_RE = re.compile(cfg["regex_patterns"]["dashes"])
 OBFUSCATED_DOT_RE = re.compile(cfg["regex_patterns"]["obfuscated_dot"])
@@ -214,8 +216,6 @@ def correctCVE(text: str) -> str:
         flags=re.IGNORECASE
     )
     return text
-
-
 #In unstructured data came across see obfuscated urls model missing these
 def correctURL(text: str) -> str:
     text = re.sub(r'\bhxxp(s?)://', r'http\1://', text, flags=re.IGNORECASE)
@@ -248,7 +248,6 @@ def extractGmailIndicators(text: str, min_score=0.6, max_score=0.9):
             "score": score
         })
     return hits
-
 #if model doesnt catch
 def extractHashIndicators(text: str, min_score=0.6, max_score=0.9):
     hits = []
@@ -262,7 +261,7 @@ def extractHashIndicators(text: str, min_score=0.6, max_score=0.9):
             "score": score
         })
     return hits
-#fdoesnt catch
+#doesnt catch
 def extractIPindicators(text: str, min_score=0.6, max_score=0.9):
     hits = []
     for m in IP_PORT_RE.finditer(text):
@@ -275,14 +274,11 @@ def extractIPindicators(text: str, min_score=0.6, max_score=0.9):
             "score": score
         })
     return hits
-
 #tokenisation fix
 def fixSpacing(results: list, original_text: str) -> list:
     for ent in results:
         ent["word"] = original_text[ent["start"]:ent["end"]]
     return results
-
-# useless function
 def mergeEntities(results):
     merged = []
     for ent in sorted(results, key=lambda e: e["start"]):
@@ -295,8 +291,7 @@ def mergeEntities(results):
         else:
             merged.append(ent.copy())
     return merged
-
-#To highlight the texts on first age
+#To highlight the texts 
 def LabelText(text: str, entities: list) -> str:
     from collections import defaultdict
 
@@ -362,7 +357,6 @@ def loadNER():
         return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
     except Exception as e:
         st.error(f"Failed to load NER model: {str(e)}")
-        st.info("Falling back to a default NER model...")
 
 ner_pipeline = loadNER()
 
@@ -397,8 +391,9 @@ def processArticle(feed_name, text, ner_pipeline):
     return df, (feed_name, cleaned, df.to_dict("records"))
 
 
-def dashboard():
 
+
+def dashboard():
     st.title("VIGIL-AI")
     st.markdown("Enter threat intel text or upload a .txt to extract malware, CVEs, URLs, etc.")
 
@@ -450,6 +445,8 @@ def dashboard():
 
                 st.markdown("### 🧼 Preprocessed Input Text")
                 st.code(cleaned, language="text")
+
+
 
                 ents = ner_pipeline(cleaned)
                 ents = fixSpacing(ents, cleaned)
@@ -511,8 +508,8 @@ def dashboard():
                     alt.Chart(count_df)
                     .mark_bar(size=30)
                     .encode(
-                        X=alt.X("entity_group:N", title="Entity Type"),
-                        Y=alt.Y("count:Q", title="Count"),
+                        x=alt.X("entity_group:N", title="Entity Type"),
+                        y=alt.Y("count:Q", title="Count"),
                         color=alt.Color(
                             "entity_group:N",
                             scale=color_scale,
@@ -542,11 +539,9 @@ def dashboard():
                 """
                 st.markdown("### ✨ Highlighted Entities in Text")
                 st.markdown(html_container, unsafe_allow_html=True)
-
                 st.markdown("### 🧾 Extracted Entities")
                 st.dataframe(filtered_df[["entity_group", "word", "score"]])
                 st.altair_chart(chart, use_container_width=True)
-
                 csv = filtered_df[["entity_group", "word", "score"]].to_csv(index=False).encode("utf-8")
                 st.download_button("📥 Download CSV", csv, "entities.csv", "text/csv")
 
@@ -560,6 +555,8 @@ def liveInsights():
     if st.button("Clear Cache"):
         st.cache_data.clear()
         st.success("Cache cleared! Please refresh the page.")
+
+
 
     @st.cache_data(show_spinner=True, ttl=600)
     def load_docs(src, limit):
@@ -581,7 +578,7 @@ def liveInsights():
             if not docs:
                 st.info("No articles found.")
                 return
-            #Display raw articles 
+            # raw articles 
             with st.expander("Raw Articles", expanded=False):
                 for feed_name, text in docs:
                     st.markdown(f"**Feed: {feed_name}**")
@@ -589,17 +586,12 @@ def liveInsights():
 
             all_entities = []
             previews = []
-
-            # Process each document one by one
             for feed_name, text in docs:
                 df, preview = processArticle(feed_name, text, ner_pipeline)
                 all_entities.append(df)
                 previews.append(preview)
-
-            # Combine all the individual DataFrames into one
             all_entities = pd.concat(all_entities, ignore_index=True)
 
-            #all extracted entities in a dropdown
             with st.expander("All Extracted Entities", expanded=False):
                 st.dataframe(all_entities)
 
@@ -610,10 +602,10 @@ def liveInsights():
                 st.dataframe(entity_counts)
 
             
+
+
             if "chart_group" not in st.session_state:
                 st.session_state.chart_group = None
-
-            
             if all_entities.empty:
                 st.warning("No entities found to display in the chart.")
                 return
