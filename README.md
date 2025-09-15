@@ -99,7 +99,7 @@ pip install -r requirements.txt
 
 ### **2. Environment Setup**
 
-**⚠️ Security Note**: Never commit `.env` files to version control!
+**🚨 CRITICAL SECURITY**: Never commit `.env` files or hardcode API keys in your code!
 
 1. **Copy the example file**:
    ```bash
@@ -108,14 +108,46 @@ pip install -r requirements.txt
 
 2. **Fill in your actual API keys** in the `.env` file:
    ```env
+   # NewsAPI Configuration
    NEWSAPI_KEY=your_actual_newsapi_key
+   
+   # Reddit API Configuration
    REDDIT_CLIENT_ID=your_actual_client_id
    REDDIT_CLIENT_SECRET=your_actual_secret
+   
+   # MongoDB Configuration
    MONGO_URI=your_actual_mongo_connection_string
+   
+   # RapidAPI Configuration
    RAPIDAPI_KEY=your_actual_rapidapi_key
+   
+   # Twitter API Configuration
+   TWITTER_BEARER_TOKEN=your_actual_twitter_bearer_token
    ```
 
-3. **Verify `.env` is ignored**: The `.gitignore` file already includes `.env` to prevent accidental commits.
+3. **Security Verification**:
+   - ✅ `.env` files are ignored by `.gitignore`
+   - ✅ All API keys use environment variables
+   - ✅ No hardcoded credentials in source code
+   - ✅ `.env.example` provides safe template
+
+### **🔒 Security Best Practices**
+
+**⚠️ IMPORTANT**: This project has been audited and secured. All previously exposed API keys have been removed and replaced with environment variable references.
+
+**Security Checklist**:
+- ✅ **Environment Variables**: All sensitive data uses `os.getenv()`
+- ✅ **Git Ignore**: `.env` files are properly ignored
+- ✅ **Template File**: `.env.example` provides safe setup guide
+- ✅ **No Hardcoding**: No API keys in source code
+- ✅ **Documentation**: Clear security instructions
+
+**If you find exposed credentials**:
+1. **Immediately rotate** the exposed API keys
+2. **Remove** hardcoded values from code
+3. **Use environment variables** instead
+4. **Update** `.env.example` with new variables
+5. **Commit** the security fixes
 
 ### **3. Run the Dashboard**
 
