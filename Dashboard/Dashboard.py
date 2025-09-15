@@ -48,7 +48,6 @@ try:
     client = pymongo.MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
     # Test the connection
     client.admin.command('ping')
-    st.success("✅ Connected to MongoDB successfully!")
 except Exception as e:
     st.error(f"❌ Failed to connect to MongoDB: {str(e)}")
     st.error("**Possible solutions:**")

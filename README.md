@@ -55,8 +55,8 @@ This proof-of-concept project demonstrates a streamlined OSINT (Open Source Inte
 ### **Data Pipeline**
 - **Data Sources**: Reddit, NewsAPI, RSS feeds
 - **Storage**: MongoDB for structured data
-- **Processing**: Manual/demonstration collection
-- **Scheduling**: Proof-of-concept implementation
+- **Processing**: Historical data collection (Google Cloud VM)
+- **Scheduling**: Previously automated via Google Cloud free trial
 
 ### **Tech Stack**
 - **Deep Learning**: PyTorch, Hugging Face Transformers
@@ -77,10 +77,11 @@ This proof-of-concept project demonstrates a streamlined OSINT (Open Source Inte
 - **Performance**: High-precision entity extraction with regex fallback
 
 ### **Data Collection Metrics**
-- **NewsAPI**: Demonstration collection (rate-limited)
-- **RSS Feeds**: Manual collection for testing
-- **Reddit**: Proof-of-concept monitoring
+- **NewsAPI**: Historical data from Google Cloud VM collection
+- **RSS Feeds**: Historical data from automated pipeline
+- **Reddit**: Historical data from scheduled collection
 - **Storage**: MongoDB with structured schemas
+- **Note**: Live data collection stopped after Google Cloud free trial ended
 
 ---
 
@@ -89,8 +90,9 @@ This proof-of-concept project demonstrates a streamlined OSINT (Open Source Inte
 **This is a proof-of-concept demonstration, not a production-ready system.**
 
 ### **Current Limitations:**
+- **Data Collection**: Live data collection stopped after Google Cloud free trial ended
+- **Historical Data**: Demo shows historical data collected during active period
 - **Rate Limits**: API keys may hit rate limits during extended use
-- **Data Volume**: Limited to demonstration-scale data collection
 - **Error Handling**: Basic error handling for demonstration purposes
 - **Scalability**: Not optimized for high-volume production use
 - **Security**: Some API keys may be visible in notebook outputs (see security section)
@@ -221,11 +223,13 @@ AI-Powered-OSINT-Tool/
   - Filterable entity categories
 
 ### **Page 2: Live Insights**
-- **Data Source**: Recent posts stored in MongoDB
-- **Collection Schedule**:
-  - NewsAPI: Every 24 hours (up to 100 articles)
-  - RSS feeds: Hourly collection
-  - Reddit: Hourly monitoring
+- **Data Source**: Historical posts stored in MongoDB
+- **Collection Status**: 
+  - ❌ **Live collection stopped**: After Google Cloud free trial ended
+  - ✅ **Historical data available**: From previous automated collection period
+  - 📊 **Demo data**: Shows data collected during active development phase
+- **Visualization**: Interactive charts and entity analysis
+- **Note**: Data is historical - no real-time updates currently
 - **Infrastructure**: Scheduled scripts running on Google Cloud VM
 
 ---
