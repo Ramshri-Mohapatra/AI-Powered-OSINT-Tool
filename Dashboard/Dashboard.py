@@ -13,15 +13,31 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 import textwrap
 import base64
-import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 #background
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
-mongo_uri = st.secrets["MONGO"]["URI"]
 
-# monngoDB
-client = pymongo.MongoClient(mongo_uri)
+# MongoDB Configuration
+mongo_uri = os.getenv("MONGO_URI")
+
+# Check if MongoDB URI is available
+if not mongo_uri:
+    st.error("⚠️ MongoDB URI not found in environment variables. Please check your .env file.")
+    st.stop()
+
+try:
+    client = pymongo.MongoClient(mongo_uri)
+    # Test the connection
+    client.admin.command('ping')
+except Exception as e:
+    st.error(f"❌ Failed to connect to MongoDB: {str(e)}")
+    st.error("Please check your MongoDB URI in the .env file.")
+    st.stop()
 db = client["osint_db"]
 feeds = {
     "Reddit": db["reddit_data"],

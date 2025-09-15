@@ -5,3 +5,4 @@ pymongo[srv]
 altair
 pandas
 sentencepiece
+python-dotenv
