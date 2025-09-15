@@ -22,12 +22,21 @@ load_dotenv()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BG_IMAGE_PATH = os.path.join(BASE_DIR, "illustration-rain-futuristic-city.jpg")
 
-# MongoDB Configuration
+# MongoDB Configuration - Try both local .env and Streamlit secrets
 mongo_uri = os.getenv("MONGO_URI")
+
+# If not found in environment, try Streamlit secrets
+if not mongo_uri:
+    try:
+        mongo_uri = st.secrets["MONGO_URI"]
+    except:
+        pass
 
 # Check if MongoDB URI is available
 if not mongo_uri:
-    st.error("⚠️ MongoDB URI not found in environment variables. Please check your .env file.")
+    st.error("⚠️ MongoDB URI not found in environment variables or Streamlit secrets.")
+    st.error("For local development: Check your .env file")
+    st.error("For Streamlit Cloud: Add MONGO_URI to your app secrets")
     st.stop()
 
 try:
