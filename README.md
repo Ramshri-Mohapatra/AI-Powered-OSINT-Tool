@@ -325,7 +325,7 @@ Contributions are welcome! Please feel free to:
 For questions or collaboration opportunities:
 
 - **GitHub Issues**: Report bugs or request features
-- **Email**: Contact through repository maintainer
+- **Email**: rskissan@gmail.com
 - **Academic**: Dr. Mohammad Saedi (Supervisor)
 
 ---
