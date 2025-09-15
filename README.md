@@ -5,9 +5,9 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![NLP](https://img.shields.io/badge/NLP-Transformers-green.svg)
 ![Deep Learning](https://img.shields.io/badge/Deep%20Learning-DeBERTa%20v3-red.svg)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)
+![Status](https://img.shields.io/badge/Status-Proof%20of%20Concept-orange.svg)
 
-**A sophisticated OSINT pipeline that collects cybersecurity data from multiple sources and uses fine-tuned transformer models for threat intelligence extraction.**
+**A proof-of-concept OSINT pipeline that demonstrates cybersecurity data collection from multiple sources and fine-tuned transformer models for threat intelligence extraction.**
 
 [![GitHub stars](https://img.shields.io/github/stars/yourusername/AI-Powered-OSINT-Tool?style=social)](https://github.com/yourusername/AI-Powered-OSINT-Tool)
 [![Hugging Face](https://img.shields.io/badge/Model-Hugging%20Face%20Hub-yellow.svg)](https://huggingface.co/Rkdon11/Cybersecurity_ner_model)
@@ -18,7 +18,7 @@
 
 ## 🎯 **Project Overview**
 
-This project provides a streamlined OSINT (Open Source Intelligence) pipeline that collects cybersecurity data from open sources like Reddit, NewsAPI, RSS feeds, and more. It uses a fine-tuned DeBERTa v3 NER model to extract cybersecurity indicators such as malware names, vulnerabilities (CVEs), and threat actors. The results are then visualized through an interactive Streamlit dashboard.
+This proof-of-concept project demonstrates a streamlined OSINT (Open Source Intelligence) pipeline that collects cybersecurity data from open sources like Reddit, NewsAPI, RSS feeds, and more. It uses a fine-tuned DeBERTa v3 NER model to extract cybersecurity indicators such as malware names, vulnerabilities (CVEs), and threat actors. The results are visualized through an interactive Streamlit dashboard.
 
 **Author**: Ramshri Mohapatra  
 **Degree**: BSc(Hons) Computer Science – 2025  
@@ -55,8 +55,8 @@ This project provides a streamlined OSINT (Open Source Intelligence) pipeline th
 ### **Data Pipeline**
 - **Data Sources**: Reddit, NewsAPI, RSS feeds
 - **Storage**: MongoDB for structured data
-- **Processing**: Automated collection every 24 hours
-- **Scheduling**: Google Cloud VM for continuous operation
+- **Processing**: Manual/demonstration collection
+- **Scheduling**: Proof-of-concept implementation
 
 ### **Tech Stack**
 - **Deep Learning**: PyTorch, Hugging Face Transformers
@@ -77,10 +77,30 @@ This project provides a streamlined OSINT (Open Source Intelligence) pipeline th
 - **Performance**: High-precision entity extraction with regex fallback
 
 ### **Data Collection Metrics**
-- **NewsAPI**: Up to 100 articles every 24 hours
-- **RSS Feeds**: Hourly collection
-- **Reddit**: Hourly monitoring of cybersecurity subreddits
+- **NewsAPI**: Demonstration collection (rate-limited)
+- **RSS Feeds**: Manual collection for testing
+- **Reddit**: Proof-of-concept monitoring
 - **Storage**: MongoDB with structured schemas
+
+---
+
+## ⚠️ **Proof of Concept Notice**
+
+**This is a proof-of-concept demonstration, not a production-ready system.**
+
+### **Current Limitations:**
+- **Rate Limits**: API keys may hit rate limits during extended use
+- **Data Volume**: Limited to demonstration-scale data collection
+- **Error Handling**: Basic error handling for demonstration purposes
+- **Scalability**: Not optimized for high-volume production use
+- **Security**: Some API keys may be visible in notebook outputs (see security section)
+
+### **Academic Purpose:**
+This project demonstrates:
+- Fine-tuning transformer models for cybersecurity NER
+- Multi-source OSINT data collection techniques
+- Real-time visualization of threat intelligence
+- End-to-end ML pipeline implementation
 
 ---
 
@@ -255,14 +275,15 @@ Use the provided `test_input.txt` file on Page 1 to test functionality quickly.
 
 ---
 
-## 🏆 **Evaluation Highlights**
+## 🏆 **Proof-of-Concept Achievements**
 
-- ✅ **Automated and modular OSINT data collection**
+- ✅ **Modular OSINT data collection pipeline**
 - ✅ **Fine-tuned transformer with regex fallback**
 - ✅ **Visual NER insights with entity filters**
-- ✅ **Scheduled data ingestion via cloud VM**
-- ✅ **Production-ready deployment**
+- ✅ **Multi-source data integration demonstration**
+- ✅ **Interactive Streamlit dashboard**
 - ✅ **High-performance A100 GPU training**
+- ✅ **Academic research and learning demonstration**
 
 ---
 
@@ -306,8 +327,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **🚀 Ready to explore cybersecurity threat intelligence?**
 
-[![GitHub](https://img.shields.io/badge/GitHub-View%20Code-black?style=for-the-badge&logo=github)](https://github.com/yourusername/AI-Powered-OSINT-Tool)
-[![Demo](https://img.shields.io/badge/Live%20Demo-Try%20Now-green?style=for-the-badge&logo=streamlit)](https://your-demo-link.com)
+
+[![Demo](https://img.shields.io/badge/Live%20Demo-Try%20Now-green?style=for-the-badge&logo=streamlit)]( https://ai-powered-osint-tool-ega8iyln9qhy2rapdg6z6k.streamlit.app/)
 [![Model](https://img.shields.io/badge/Hugging%20Face-Model%20Hub-yellow?style=for-the-badge&logo=huggingface)](https://huggingface.co/Rkdon11/Cybersecurity_ner_model)
 
 </div>
