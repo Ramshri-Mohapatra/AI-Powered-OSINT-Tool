@@ -188,6 +188,7 @@ AI-Powered-OSINT-Tool/
 │   ├── Dashboard.py                  # Main dashboard application
 │   ├── requirements.txt              # Python dependencies
 │   ├── patterns.json                 # Regex patterns for post-processing
+│   ├── test_input.txt                # Sample cybersecurity text for testing
 │   ├── test_negative_patterns.py      # Testing utilities
 │   └── illustration-rain-futuristic-city.jpg
 ├── 🔄 DataCollection/               # Data pipeline scripts
@@ -269,13 +270,21 @@ AI-Powered-OSINT-Tool/
 
 ## 🧪 **Testing the Tool**
 
-### **Quick Test**
-Use the provided `test_input.txt` file on Page 1 to test functionality quickly.
+### **Quick Start Testing**
+- **Use `test_input.txt`**: Copy-paste the sample cybersecurity text from the `Dashboard` directory
+- **Custom Input**: Paste your own cybersecurity-related text on Page 1
+- **Live Demo**: Explore historical data on Page 2
+- **Validate Results**: Check entity extraction accuracy and categories
 
-### **Custom Testing**
-- Upload your own cybersecurity text
-- Test with real-time data on Page 2
-- Validate entity extraction accuracy
+### **Sample Test Text**
+The `test_input.txt` file contains a comprehensive cybersecurity alert with:
+- **Organizations**: Financial institutions (JPMorgan, Bank of America, etc.)
+- **Malware**: Emotet, APT-29 threat actor group
+- **Vulnerabilities**: CVE-2023-1234, CVE-2023-5678
+- **Indicators**: SHA256 hashes, IP addresses, domains
+- **Systems**: Microsoft Exchange Server, Apache Struts
+
+**Note**: Live data collection is no longer active - demo shows historical data
 
 ---
 
