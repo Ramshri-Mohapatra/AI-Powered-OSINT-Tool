@@ -9,8 +9,7 @@
 
 **A proof-of-concept OSINT pipeline that demonstrates cybersecurity data collection from multiple sources and fine-tuned transformer models for threat intelligence extraction.**
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/AI-Powered-OSINT-Tool?style=social)](https://github.com/yourusername/AI-Powered-OSINT-Tool)
-[![Hugging Face](https://img.shields.io/badge/Model-Hugging%20Face%20Hub-yellow.svg)](https://huggingface.co/Rkdon11/Cybersecurity_ner_model)
+
 
 </div>
 
