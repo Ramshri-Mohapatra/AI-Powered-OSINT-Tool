@@ -45,12 +45,22 @@ if not mongo_uri:
     st.stop()
 
 try:
-    client = pymongo.MongoClient(mongo_uri)
+    client = pymongo.MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
     # Test the connection
     client.admin.command('ping')
+    st.success("✅ Connected to MongoDB successfully!")
 except Exception as e:
     st.error(f"❌ Failed to connect to MongoDB: {str(e)}")
-    st.error("Please check your MongoDB URI in the .env file.")
+    st.error("**Possible solutions:**")
+    st.error("1. **Check MongoDB Atlas cluster**: Your cluster may have been deleted or renamed")
+    st.error("2. **Verify connection string**: Ensure the cluster name is correct")
+    st.error("3. **Check network access**: Ensure your IP is whitelisted in MongoDB Atlas")
+    st.error("4. **Try alternative connection**: Use standard MongoDB URI instead of SRV")
+    
+    # Show current URI (masked for security)
+    masked_uri = mongo_uri[:20] + "..." + mongo_uri[-20:] if len(mongo_uri) > 40 else mongo_uri
+    st.error(f"**Current URI**: `{masked_uri}`")
+    
     st.stop()
 db = client["osint_db"]
 feeds = {

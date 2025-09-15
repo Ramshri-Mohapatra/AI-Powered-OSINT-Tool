@@ -6,3 +6,4 @@ altair
 pandas
 sentencepiece
 python-dotenv
+dnspython
