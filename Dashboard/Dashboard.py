@@ -28,9 +28,14 @@ mongo_uri = os.getenv("MONGO_URI")
 # If not found in environment, try Streamlit secrets
 if not mongo_uri:
     try:
+        # Try direct MONGO_URI first
         mongo_uri = st.secrets["MONGO_URI"]
     except:
-        pass
+        try:
+            # Try MONGO.URI format (as configured in Streamlit Cloud)
+            mongo_uri = st.secrets["MONGO"]["URI"]
+        except:
+            pass
 
 # Check if MongoDB URI is available
 if not mongo_uri:
