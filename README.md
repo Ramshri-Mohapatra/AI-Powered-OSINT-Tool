@@ -99,15 +99,23 @@ pip install -r requirements.txt
 
 ### **2. Environment Setup**
 
-Create a `.env` file for API access:
+**⚠️ Security Note**: Never commit `.env` files to version control!
 
-```env
-NEWSAPI_KEY=your_newsapi_key
-REDDIT_CLIENT_ID=your_client_id
-REDDIT_CLIENT_SECRET=your_secret
-MONGO_URI=your_mongo_connection_string
-RAPIDAPI_KEY=your_rapidapi_key
-```
+1. **Copy the example file**:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Fill in your actual API keys** in the `.env` file:
+   ```env
+   NEWSAPI_KEY=your_actual_newsapi_key
+   REDDIT_CLIENT_ID=your_actual_client_id
+   REDDIT_CLIENT_SECRET=your_actual_secret
+   MONGO_URI=your_actual_mongo_connection_string
+   RAPIDAPI_KEY=your_actual_rapidapi_key
+   ```
+
+3. **Verify `.env` is ignored**: The `.gitignore` file already includes `.env` to prevent accidental commits.
 
 ### **3. Run the Dashboard**
 
