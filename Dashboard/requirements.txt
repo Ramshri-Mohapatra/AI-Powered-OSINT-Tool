@@ -1,8 +1,15 @@
---extra-index-url https://download.pytorch.org/whl/cpu
+# Streamlit Cloud installs from THIS file (not the root requirements.txt).
+#
+# torch is pinned to an explicit CPU wheel URL rather than via --extra-index-url.
+# Do NOT switch back to "--extra-index-url https://download.pytorch.org/whl/cpu":
+# that index also hosts its own copies of certifi, requests, urllib3, numpy and
+# friends, and uv's default first-index strategy prefers it over PyPI, silently
+# pulling 2022-era versions that break the transformers import.
+torch @ https://download.pytorch.org/whl/cpu/torch-2.13.0%2Bcpu-cp312-cp312-manylinux_2_28_x86_64.whl ; sys_platform == "linux"
+torch==2.13.0 ; sys_platform != "linux"
 
 streamlit
 transformers
-torch==2.13.0+cpu
 pymongo
 dnspython
 altair
