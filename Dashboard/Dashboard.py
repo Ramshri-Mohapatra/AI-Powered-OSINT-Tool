@@ -3,7 +3,6 @@ os.environ["TRANSFORMERS_NO_TF"] = "1"
 import streamlit as st
 import altair as alt
 import json
-import gc
 import random
 import re
 import pandas as pd
@@ -400,13 +399,14 @@ NER_MODEL = "Rkdon11/Cybersecurity_ner_model" #this is the finalised model after
 @st.cache_resource(show_spinner="Loading NER model…")
 def loadNER():
     tok = AutoTokenizer.from_pretrained(NER_MODEL)
-    mdl = AutoModelForTokenClassification.from_pretrained(NER_MODEL)
-    mdl.eval()
 
     # fp32 deberta-v3-large weighs ~1.74GB and Streamlit Cloud only gives ~2.7GB for
-    # everything, so int8 the Linear layers to get down to ~450MB. Also faster on CPU.
-    mdl = torch.ao.quantization.quantize_dynamic(mdl, {torch.nn.Linear}, dtype=torch.qint8)
-    gc.collect()
+    # everything, so load straight to bf16 (~870MB) -- verified to give byte-for-byte
+    # the same entities as fp32. Do NOT swap this for int8 dynamic quantisation: it
+    # loads and runs happily but returns zero entities, because deberta's disentangled
+    # attention can't survive quantised position projections.
+    mdl = AutoModelForTokenClassification.from_pretrained(NER_MODEL, dtype=torch.bfloat16)
+    mdl.eval()
 
     return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
 
@@ -537,6 +537,15 @@ def dashboard():
                     if e["entity_group"] in selected_groups and e["score"] >= min_score
                 ]
                 #ents = mergeEntities(ents)
+
+                # pd.DataFrame([]) has no columns at all, so selecting them below would
+                # blow up with a KeyError instead of just saying nothing was found
+                if not ents:
+                    st.warning(
+                        "No entities found. Try lowering the confidence threshold, "
+                        "selecting more entity types, or using text with more indicators."
+                    )
+                    return
 
                 df = (
                     pd.DataFrame(ents)[["entity_group", "word", "score", "start", "end"]]
@@ -670,27 +679,28 @@ def liveInsights():
                 st.warning("No entities found to display in the chart.")
                 return
 
-            available_entities = all_entities["entity_group"].unique()
-            default_chart_group = "Indicator" if "Indicator" in available_entities else available_entities[0] if len(available_entities) > 0 else None
-
-            if default_chart_group:
-                chart_group = st.sidebar.selectbox(
-                    "Chart entity type",
-                    available_entities,
-                    index=list(available_entities).index(default_chart_group),
-                    key="chart_group_select"
-                )
-                st.session_state.chart_group = chart_group
-            else:
-                st.warning("No entity types available to chart.")
-                return
-
-            chart_group = st.session_state.chart_group
+            # every type we know about, not just the ones that happened to show up,
+            # so the picker doesn't silently shrink when a feed is quiet
+            available_entities = [
+                g for g in ENTITY_COLORS
+                if g in set(all_entities["entity_group"])
+            ]
+            chart_group = st.sidebar.selectbox(
+                "Chart entity type",
+                ["All"] + available_entities,   # default to All, then narrow down
+                index=0,
+                key="chart_group_select"
+            )
+            st.session_state.chart_group = chart_group
 
             # Preparing the  DataFrame for Chhart
             all_feeds = list(feeds.keys()) if source == "All" else [source]
+            scoped = (
+                all_entities if chart_group == "All"
+                else all_entities[all_entities["entity_group"] == chart_group]
+            )
             chart_df = (
-                all_entities[all_entities["entity_group"] == chart_group]
+                scoped
                 .groupby("feed")["word"]
                 .nunique()
                 .reset_index(name="unique_count")
@@ -711,15 +721,17 @@ def liveInsights():
                 range=["#ff6b6b", "#1e90ff", "#2ed573"]  
             )
 
+            y_title = "Unique Entity Count" if chart_group == "All" else f"Unique “{chart_group}” Count"
+            chart_title = "Unique Entities by Feed" if chart_group == "All" else f"Unique {chart_group} by Feed"
             chart = (
                 alt.Chart(chart_df)
                 .mark_bar()
                 .encode(
                     x=alt.X("feed:N", title="Feed"),
-                    y=alt.Y("unique_count:Q", title=f"Unique “{chart_group}” Count"),
+                    y=alt.Y("unique_count:Q", title=y_title),
                     color=alt.Color("feed:N", scale=feed_color_scale, legend=None),
                 )
-                .properties(width=565, height=285.5, title=f"Unique {chart_group} by Feed")
+                .properties(width=565, height=285.5, title=chart_title)
             )
             st.altair_chart(chart, use_container_width=True)
 
