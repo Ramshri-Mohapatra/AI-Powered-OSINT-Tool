@@ -3,9 +3,11 @@ os.environ["TRANSFORMERS_NO_TF"] = "1"
 import streamlit as st
 import altair as alt
 import json
+import gc
 import random
 import re
 import pandas as pd
+import torch
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 from collections import defaultdict
 import pymongo
@@ -392,18 +394,29 @@ def LabelText(text: str, entities: list) -> str:
 
     return "".join(html_out)
 
-# load ner 
-@st.cache_resource
-def loadNER():
-    try:
-        tok = AutoTokenizer.from_pretrained("Rkdon11/Cybersecurity_ner_model")
-        mdl = AutoModelForTokenClassification.from_pretrained("Rkdon11/Cybersecurity_ner_model") #this is the finalised model after training.Published on Github
-        return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
-    except Exception as e:
-        st.error(f"Failed to load NER model: {str(e)}")
-        st.info("Falling back to a default NER model...")
+# load ner
+NER_MODEL = "Rkdon11/Cybersecurity_ner_model" #this is the finalised model after training.Published on Github
 
-ner_pipeline = loadNER()
+@st.cache_resource(show_spinner="Loading NER model…")
+def loadNER():
+    tok = AutoTokenizer.from_pretrained(NER_MODEL)
+    mdl = AutoModelForTokenClassification.from_pretrained(NER_MODEL)
+    mdl.eval()
+
+    # fp32 deberta-v3-large weighs ~1.74GB and Streamlit Cloud only gives ~2.7GB for
+    # everything, so int8 the Linear layers to get down to ~450MB. Also faster on CPU.
+    mdl = torch.ao.quantization.quantize_dynamic(mdl, {torch.nn.Linear}, dtype=torch.qint8)
+    gc.collect()
+
+    return pipeline("ner", model=mdl, tokenizer=tok, aggregation_strategy="first")
+
+# errors are raised out of loadNER on purpose: cache_resource never caches a failure,
+# so a bad load retries on the next run instead of poisoning the cache with None
+try:
+    ner_pipeline = loadNER()
+except Exception as e:
+    st.error(f"Failed to load NER model: {e}")
+    st.stop()
 
 # live insight. Ic ant code so much solution!
 def processArticle(feed_name, text, ner_pipeline):

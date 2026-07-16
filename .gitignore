@@ -4,6 +4,9 @@
 *.key
 pipeline_logs.log
 
+# Personal notes, not for the public repo
+FIX-NOTES.md
+
 # Python junk
 __pycache__/
 *.pyc

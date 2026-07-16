@@ -1,9 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 streamlit
 transformers
-torch
-pymongo[srv]
+torch==2.13.0+cpu
+pymongo
+dnspython
 altair
 pandas
 sentencepiece
 python-dotenv
-dnspython
